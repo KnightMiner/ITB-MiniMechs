@@ -98,7 +98,7 @@ end
 local PATHS = {
   mech    = "units/player",
   mission = "units/mission",
-  enemy   = "units/alien",
+  enemy   = "units/aliens",
   bot     = "units/snowbots"
 }
 
@@ -138,6 +138,7 @@ local function addUnitAnims(group, objects)
     addUnitAnim(path, base, name, object.Death,           "d",        "_death"   )
     addUnitAnim(path, base, name, object.Submerged,       "w",        "_w"       )
     addUnitAnim(path, base, name, object.SubmergedBroken, "w_broken", "_w_broken")
+    addUnitAnim(path, base, name, object.Disabled,        "off",      "_off"     )
 
     -- emerge has a different base
     addUnitAnim(path, "BaseEmerge", name, object.Emerge,  "e",        "_emerge"  )
@@ -148,7 +149,7 @@ local function addUnitAnims(group, objects)
     end
 
     -- mechs have the extra hanger sprite
-    if group == "mech" then
+    if group == "mech" and not object.NoHanger then
       sprites.addSprite(path, name .. "_h")
     end
   end
