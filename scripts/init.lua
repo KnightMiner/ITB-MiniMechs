@@ -20,6 +20,24 @@ end
 function mod:init()
   -- sprites
   local sprites = self:loadScript("libs/sprites")
+  sprites.addMissionUnits(
+    {
+      Name = "mini_mirrortank",
+      Default  = { PosX = -15, PosY = 12 },
+      Animated = { PosX = -15, PosY = 12, NumFrames = 2 },
+      Death    = { PosX = -21, PosY =  3, NumFrames = 11, Time = 0.14, Loop = false },
+      Broken   = { PosX = -21, PosY =  3 },
+      Icon     = {}
+    }
+  )
+  sprites.addSprite("effects", "shotup_mini_mirrortank")
+  sprites.addSprite("weapons", "deploy_mini_mirrortank")
+
+  -- deploys
+  self:loadScript("deploys/tanks")
+
+  -- texts
+  modApi:addWeapon_Texts(self:loadScript("weapon_texts"))
 end
 
 function mod:load(options,version)
