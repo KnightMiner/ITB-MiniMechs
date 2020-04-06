@@ -21,6 +21,7 @@ function mod:init()
   -- sprites
   local sprites = self:loadScript("libs/sprites")
   sprites.addMissionUnits(
+    -- tanks
     {
       Name = "mini_mirrortank",
       Default  = { PosX = -15, PosY = 12 },
@@ -54,6 +55,14 @@ function mod:init()
       Death    = { PosX = -19, PosY = 9, NumFrames = 11, Time = 0.14, Loop = false },
       Broken   = { PosX = -19, PosY = 9 },
       Icon     = {}
+    },
+    {
+      Name    = "mini_repair_copter",
+      Default  = { PosX = -15, PosY = 8 },
+      Animated = { PosX = -15, PosY = 8, NumFrames = 4 },
+      Death    = { PosX = -19, PosY = 9, NumFrames = 11, Time = 0.14, Loop = false },
+      Broken   = { PosX = -19, PosY = 9 },
+      Icon     = {}
     }
   )
   -- tanks
@@ -68,6 +77,9 @@ function mod:init()
   sprites.addSprite("effects", "shotup_mini_napalm_copter")
   sprites.addSprite("weapons", "deploy_mini_napalm_copter")
   sprites.addSprite("weapons", "mini_napalm_bombs")
+  sprites.addSprite("effects", "shotup_mini_repair_copter")
+  sprites.addSprite("weapons", "deploy_mini_repair_copter")
+  sprites.addSprite("weapons", "mini_repair_drop")
 
   -- deploys
   self:loadScript("deploys/tanks")
