@@ -37,6 +37,23 @@ function mod:init()
       Death    = { PosX = -20, PosY = -7, NumFrames = 11, Time = 0.14, Loop = false },
       Broken   = { PosX = -19, PosY = -4 },
       Icon     = {}
+    },
+    -- copters
+    {
+      Name    = "mini_smoke_copter",
+      Default  = { PosX = -15, PosY = 8 },
+      Animated = { PosX = -15, PosY = 8, NumFrames = 4 },
+      Death    = { PosX = -19, PosY = 9, NumFrames = 11, Time = 0.14, Loop = false },
+      Broken   = { PosX = -19, PosY = 9 },
+      Icon     = {}
+    },
+    {
+      Name    = "mini_napalm_copter",
+      Default  = { PosX = -15, PosY = 8 },
+      Animated = { PosX = -15, PosY = 8, NumFrames = 4 },
+      Death    = { PosX = -19, PosY = 9, NumFrames = 11, Time = 0.14, Loop = false },
+      Broken   = { PosX = -19, PosY = 9 },
+      Icon     = {}
     }
   )
   -- tanks
@@ -45,10 +62,17 @@ function mod:init()
   -- bots
   sprites.addSprite("effects", "shotup_mini_knightbot")
   sprites.addSprite("weapons", "deploy_mini_knightbot")
+  -- copters
+  sprites.addSprite("effects", "shotup_mini_smoke_copter")
+  sprites.addSprite("weapons", "deploy_mini_smoke_copter")
+  sprites.addSprite("effects", "shotup_mini_napalm_copter")
+  sprites.addSprite("weapons", "deploy_mini_napalm_copter")
+  sprites.addSprite("weapons", "mini_napalm_bombs")
 
   -- deploys
   self:loadScript("deploys/tanks")
   self:loadScript("deploys/bots")
+  self:loadScript("deploys/copters")
 
   -- texts
   modApi:addWeapon_Texts(self:loadScript("weapon_texts"))

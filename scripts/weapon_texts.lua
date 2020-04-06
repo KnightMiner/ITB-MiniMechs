@@ -32,4 +32,34 @@ return {
   Mini_DeployKnightBot_Upgrade2 = "Dash",
   Mini_DeployKnightBot_A_UpgradeDescription = "Increases the bot's move speed to 4.",
   Mini_DeployKnightBot_B_UpgradeDescription = "Charge any distance before stabbing the target, increases damage by 1.",
+
+  -------------
+  -- Copters --
+  -------------
+
+  -- Smoke Copter
+  Mini_SmokeBombs_Name = "Smoke Bombs",
+  Mini_SmokeBombs_Description = "Fly over the targets while dropping smoke.",
+  Mini_SmokeBombs_Upgrade1 = "+1 Range",
+  Mini_SmokeBombs_A_UpgradeDescription = "Increases potential range by 1.",
+
+  Mini_DeploySmokeCopter_Name = "Smoke Copter",
+  Mini_DeploySmokeCopter_Description = "Deploy a smoke copter to help in combat.",
+  Mini_DeploySmokeCopter_Upgrade1 = "Smoke Immune",
+  Mini_DeploySmokeCopter_Upgrade2 = "+1 Range",
+  Mini_DeploySmokeCopter_A_UpgradeDescription = "Makes the copter immune to smoke.",
+  Mini_DeploySmokeCopter_B_UpgradeDescription = "Increases potential range by 1.",
+
+  -- Napalm Copter
+  Mini_NapalmBombs_Name = "Napalm Bombs",
+  Mini_NapalmBombs_Description = "Fly over the targets while dropping an explosive fire bomb.",
+  Mini_NapalmBombs_Upgrade1 = "+1 Range",
+  Mini_NapalmBombs_A_UpgradeDescription = "Increases potential attack range by 1.",
+
+  Mini_DeployNapalmCopter_Name = "Napalm Copter",
+  Mini_DeployNapalmCopter_Description = "Deploy a smoke copter to help in combat.",
+  Mini_DeployNapalmCopter_Upgrade1 = "Fire Immune",
+  Mini_DeployNapalmCopter_Upgrade2 = "+1 Range",
+  Mini_DeployNapalmCopter_A_UpgradeDescription = "Makes the copter immune to fire.",
+  Mini_DeployNapalmCopter_B_UpgradeDescription = "Increases potential attack range by 1.",
 }
