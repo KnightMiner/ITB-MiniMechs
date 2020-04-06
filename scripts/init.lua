@@ -28,13 +28,26 @@ function mod:init()
       Death    = { PosX = -21, PosY =  3, NumFrames = 11, Time = 0.14, Loop = false },
       Broken   = { PosX = -21, PosY =  3 },
       Icon     = {}
+    },
+    {
+      Name = "mini_knightbot",
+      Default  = { PosX = -19, PosY = -4 },
+      Animated = { PosX = -19, PosY = -4, NumFrames = 4 },
+      Death    = { PosX = -21, PosY =  3, NumFrames = 11, Time = 0.14, Loop = false },
+      Broken   = { PosX = -21, PosY =  3 },
+      Icon     = {}
     }
   )
+  -- tanks
   sprites.addSprite("effects", "shotup_mini_mirrortank")
   sprites.addSprite("weapons", "deploy_mini_mirrortank")
+  -- bots
+  sprites.addSprite("effects", "shotup_mini_knightbot")
+  sprites.addSprite("weapons", "deploy_mini_knightbot")
 
   -- deploys
   self:loadScript("deploys/tanks")
+  self:loadScript("deploys/bots")
 
   -- texts
   modApi:addWeapon_Texts(self:loadScript("weapon_texts"))
