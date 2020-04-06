@@ -29,12 +29,13 @@ function mod:init()
       Broken   = { PosX = -21, PosY =  3 },
       Icon     = {}
     },
+    -- bots
     {
       Name = "mini_knightbot",
       Default  = { PosX = -19, PosY = -4 },
       Animated = { PosX = -19, PosY = -4, NumFrames = 4 },
-      Death    = { PosX = -21, PosY =  3, NumFrames = 11, Time = 0.14, Loop = false },
-      Broken   = { PosX = -21, PosY =  3 },
+      Death    = { PosX = -20, PosY = -7, NumFrames = 11, Time = 0.14, Loop = false },
+      Broken   = { PosX = -19, PosY = -4 },
       Icon     = {}
     }
   )
