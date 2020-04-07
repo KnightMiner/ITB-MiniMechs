@@ -314,3 +314,97 @@ Mini_DeployJudoBot_B = Mini_DeployJudoBot:new{
 Mini_DeployJudoBot_AB = Mini_DeployJudoBot_B:new{
 	Deployed = "Mini_JudoBotAB"
 }
+
+-----------------------
+-- Deploy Leap-Bot --
+-----------------------
+
+--- Unit
+Mini_LeapBot = Pawn:new {
+	Name           = "Laser-Bot",
+	Health         = 1,
+	MoveSpeed      = 3,
+	DefaultTeam    = TEAM_PLAYER,
+	ImpactMaterial = IMPACT_METAL,
+	SkillList      = { "Mini_Boosters" },
+	-- display
+	Image          = "mini_leapbot",
+	ImageOffset    = 0,
+	SoundLocation  = "/enemy/snowart_1/",
+	Corpse         = false
+}
+Mini_LeapBotA  = Mini_LeapBot:new { MoveSpeed = 4 }
+Mini_LeapBotB  = Mini_LeapBot:new { ImageOffset = 1, SkillList = { "Mini_Boosters_A" } }
+Mini_LeapBotAB = Mini_LeapBotB:new { MoveSpeed = 4 }
+
+--- Unit weapon
+Mini_Boosters = Leap_Attack:new {
+	Class       = "Unique",
+	Damage      = 0,
+	SelfDamage  = 0,
+	Push        = 1,
+	Range       = 2,
+	PowerCost   = 0,
+	Upgrades    = 1,
+	UpgradeCost = {2},
+	-- display
+	Icon = "weapons/brute_boosters.png",
+	LaunchSound = "/weapons/boosters",
+	ImpactSound = "/impact/generic/mech",
+	TipImage = {
+		Unit = Point(2,4),
+		Enemy = Point(2,1),
+		Enemy2 = Point(3,2),
+		Target = Point(2,2),
+		CustomPawn = "Mini_LeapBot"
+	}
+}
+Mini_Boosters_A = Mini_Boosters:new{
+	Range = 3,
+	TipImage = {
+		Unit = Point(2,4),
+		Enemy = Point(2,2),
+		Enemy2 = Point(3,1),
+		Target = Point(2,1),
+		CustomPawn = "Mini_LeapBotB"
+	}
+}
+
+-- Equipable weapon
+Mini_DeployLeapBot = Deployable:new{
+	Deployed = "Mini_LeapBot",
+	PowerCost   = 2,
+	Upgrades    = 2,
+	UpgradeCost = {1,2},
+	-- visuals
+  Icon        = "weapons/deploy_mini_leapbot.png",
+  Projectile  = "effects/shotup_mini_leapbot1.png",
+	LaunchSound = "/weapons/deploy_tank",
+	ImpactSound = "/impact/generic/mech",
+	TipImage = {
+		Unit          = Point(1,3),
+		Target        = Point(1,1),
+		Enemy         = Point(2,1),
+		Enemy2        = Point(3,2),
+		Second_Origin = Point(1,1),
+		Second_Target = Point(3,1)
+	}
+}
+Mini_DeployLeapBot_A = Mini_DeployLeapBot:new{
+	Deployed = "Mini_LeapBotA"
+}
+Mini_DeployLeapBot_B = Mini_DeployLeapBot:new{
+	Deployed = "Mini_LeapBotB",
+	Projectile = "effects/shotup_mini_leapbot2.png",
+	TipImage = {
+		Unit          = Point(1,3),
+		Target        = Point(1,1),
+		Enemy         = Point(3,1),
+		Enemy2        = Point(4,2),
+		Second_Origin = Point(1,1),
+		Second_Target = Point(4,1)
+	}
+}
+Mini_DeployLeapBot_AB = Mini_DeployLeapBot_B:new{
+	Deployed = "Mini_LeapBotAB"
+}

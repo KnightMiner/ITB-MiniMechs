@@ -59,6 +59,19 @@ return {
   Mini_DeployJudoBot_A_UpgradeDescription = "Increases the bot's move speed to 4.",
   Mini_DeployJudoBot_B_UpgradeDescription = "Increases range by 1.",
 
+  -- Leap-Bot
+  Mini_Boosters_Name = "Boosters",
+  Mini_Boosters_Description = "Jump forward and push adjacent tiles away.",
+  Mini_Boosters_Upgrade1 = "+1 Range",
+  Mini_Boosters_A_UpgradeDescription = "Increases maximum leap distance from 2 to 3",
+
+  Mini_DeployLeapBot_Name = "Leap-Bot",
+  Mini_DeployLeapBot_Description = "Deploy a leap-bot to help in combat.",
+  Mini_DeployLeapBot_Upgrade1 = "+1 Move",
+  Mini_DeployLeapBot_Upgrade2 = "+1 Range",
+  Mini_DeployLeapBot_A_UpgradeDescription = "Increases the bot's move speed to 4.",
+  Mini_DeployLeapBot_B_UpgradeDescription = "Increases maximum leap distance from 2 to 3.",
+
   -------------
   -- Copters --
   -------------
