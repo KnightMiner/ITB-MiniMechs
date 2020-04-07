@@ -40,7 +40,7 @@ Mini_Mirrorshot = TankDefault:new {
 		Target = Point(1,2)
 	}
 }
-Mini_Mirrorshot_A = Mini_Mirrorshot:new{ Damage = 2 }
+Mini_Mirrorshot_A = Mini_Mirrorshot:new{ Push = 1 }
 
 -- Reimplemented as vanilla ignores hte push flag on the backshot
 function Mini_Mirrorshot:GetSkillEffect(p1, p2)
@@ -50,7 +50,10 @@ function Mini_Mirrorshot:GetSkillEffect(p1, p2)
 
 	-- front attack
 	local damage = SpaceDamage(target, self.Damage)
-	damage.sAnimation = self.Explo..direction
+	damage.sAnimation = self.Explo .. direction
+	if self.Push == 1 then
+		damage.iPush = direction
+	end
 	ret:AddProjectile(damage, self.ProjectileArt, NO_DELAY)
 
 	-- back attack
@@ -59,6 +62,9 @@ function Mini_Mirrorshot:GetSkillEffect(p1, p2)
 	if target2 ~= p1 then
 		damage = SpaceDamage(target2, self.Damage)
 		damage.sAnimation = self.Explo..backdir
+		if self.Push == 1 then
+			damage.iPush = backdir
+		end
 		ret:AddProjectile(damage, self.ProjectileArt)
 	end
 
