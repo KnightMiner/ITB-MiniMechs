@@ -33,27 +33,27 @@ function mod:init()
     -- bots
     {
       Name = "mini_knightbot",
-      Default  = { PosX = -19, PosY = -4 },
-      Animated = { PosX = -19, PosY = -4, NumFrames = 4 },
-      Death    = { PosX = -20, PosY = -7, NumFrames = 11, Time = 0.14, Loop = false },
-      Broken   = { PosX = -19, PosY = -4 },
-      Icon     = {}
+      Default  = { Height = 2, PosX = -19, PosY = -4,  },
+      Animated = { Height = 2, PosX = -19, PosY = -4, NumFrames = 4 },
+      Death    = { Height = 2, PosX = -20, PosY = -7, NumFrames = 11, Time = 0.14, Loop = false },
+      Broken   = { Height = 2, PosX = -19, PosY = -4 },
+      Icon     = { Height = 2 }
     },
     {
       Name = "mini_laserbot",
-      Default  = { PosX = -15, PosY = -5 },
-      Animated = { PosX = -15, PosY = -5, NumFrames = 4 },
-      Death    = { PosX = -19, PosY = -9, NumFrames = 11, Time = 0.14, Loop = false },
-      Broken   = { PosX = -15, PosY = -5 },
-      Icon     = {}
+      Default  = { Height = 2, PosX = -15, PosY = -5 },
+      Animated = { Height = 2, PosX = -15, PosY = -5, NumFrames = 4 },
+      Death    = { Height = 2, PosX = -19, PosY = -9, NumFrames = 11, Time = 0.14, Loop = false },
+      Broken   = { Height = 2, PosX = -15, PosY = -5 },
+      Icon     = { Height = 2 }
     },
     {
       Name = "mini_judobot",
-      Default  = { PosX = -15, PosY = -1 },
-      Animated = { PosX = -15, PosY = -1, NumFrames = 1 },
-      Death    = { PosX = -19, PosY = -5, NumFrames = 11, Time = 0.14, Loop = false },
-      Broken   = { PosX = -15, PosY = -1 },
-      Icon     = {}
+      Default  = { Height = 2, PosX = -15, PosY = -1 },
+      Animated = { Height = 2, PosX = -15, PosY = -1, NumFrames = 4 },
+      Death    = { Height = 2, PosX = -19, PosY = -5, NumFrames = 11, Time = 0.14, Loop = false },
+      Broken   = { Height = 2, PosX = -15, PosY = -1 },
+      Icon     = { Height = 2 }
     },
     -- copters
     {
@@ -85,11 +85,14 @@ function mod:init()
   sprites.addSprite("effects", "shotup_mini_mirrortank")
   sprites.addSprite("weapons", "deploy_mini_mirrortank")
   -- bots
-  sprites.addSprite("effects", "shotup_mini_knightbot")
+  sprites.addSprite("effects", "shotup_mini_knightbot1")
+  sprites.addSprite("effects", "shotup_mini_knightbot2")
   sprites.addSprite("weapons", "deploy_mini_knightbot")
-  sprites.addSprite("effects", "shotup_mini_laserbot")
+  sprites.addSprite("effects", "shotup_mini_laserbot1")
+  sprites.addSprite("effects", "shotup_mini_laserbot2")
   sprites.addSprite("weapons", "deploy_mini_laserbot")
-  sprites.addSprite("effects", "shotup_mini_judobot")
+  sprites.addSprite("effects", "shotup_mini_judobot1")
+  sprites.addSprite("effects", "shotup_mini_judobot2")
   sprites.addSprite("weapons", "deploy_mini_judobot")
   -- copters
   sprites.addSprite("effects", "shotup_mini_smoke_copter")
