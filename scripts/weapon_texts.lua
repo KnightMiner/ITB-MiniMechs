@@ -33,6 +33,19 @@ return {
   Mini_DeployKnightBot_A_UpgradeDescription = "Increases the bot's move speed to 4.",
   Mini_DeployKnightBot_B_UpgradeDescription = "Charge any distance before stabbing the target, increases damage by 1.",
 
+  -- Laser-Bot
+  Mini_Laserbeam_Name = "Laser Beam",
+  Mini_Laserbeam_Description = "Fire a piercing beam that decreases in damage the further it goes.",
+  Mini_Laserbeam_Upgrade1 = "+1 Damage",
+  Mini_Laserbeam_A_UpgradeDescription = "Increases the starting damage by 1.",
+
+  Mini_DeployLaserBot_Name = "Laser-Bot",
+  Mini_DeployLaserBot_Description = "Deploy a laser-bot to help in combat.",
+  Mini_DeployLaserBot_Upgrade1 = "+1 Move",
+  Mini_DeployLaserBot_Upgrade2 = "+1 Damage",
+  Mini_DeployLaserBot_A_UpgradeDescription = "Increases the bot's move speed to 4.",
+  Mini_DeployLaserBot_B_UpgradeDescription = "Increases the starting damage by 1.",
+
   -------------
   -- Copters --
   -------------
