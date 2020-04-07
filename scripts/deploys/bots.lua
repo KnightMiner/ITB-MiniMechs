@@ -30,7 +30,13 @@ Mini_KnightCharge = Prime_Punchmech:new {
 	Upgrades    = 1,
 	UpgradeCost = {3},
 	-- display
-	Icon        = "weapons/prime_sword.png",
+	Icon = "weapons/prime_sword.png",
+	TipImage = {
+		Unit = Point(2,2),
+		Enemy = Point(2,1),
+		Target = Point(2,1),
+		CustomPawn = "Mini_KnightBot"
+	}
 }
 Mini_KnightCharge_A = Mini_KnightCharge:new{
 	PathSize = INT_MAX,
@@ -40,7 +46,7 @@ Mini_KnightCharge_A = Mini_KnightCharge:new{
 		Unit = Point(2,4),
 		Enemy = Point(2,1),
 		Target = Point(2,1),
-		CustomPawn = "Mini_KnightBot"
+		CustomPawn = "Mini_KnightBotB"
 	}
 }
 
@@ -122,7 +128,15 @@ Mini_Laserbeam = LaserDefault:new {
 	}
 }
 Mini_Laserbeam_A = Mini_Laserbeam:new{
-	Damage = 3
+	Damage = 3,
+	TipImage = {
+		Unit = Point(2,4),
+		Enemy = Point(2,2),
+		Friendly = Point(2,1),
+		Target = Point(2,2),
+		Mountain = Point(2,0),
+		CustomPawn = "Mini_LaserBotB"
+	}
 }
 
 -- Equipable weapon
@@ -195,7 +209,7 @@ Mini_JudoThrow = Skill:new {
 		Unit   = Point(2,2),
 		Enemy  = Point(2,1),
 		Target = Point(2,3),
-		CustomPawn = "Mini_LaserBot"
+		CustomPawn = "Mini_JudoBot"
 	}
 }
 Mini_JudoThrow_A = Mini_JudoThrow:new{
@@ -204,7 +218,7 @@ Mini_JudoThrow_A = Mini_JudoThrow:new{
 		Unit   = Point(2,2),
 		Enemy  = Point(2,1),
 		Target = Point(2,4),
-		CustomPawn = "Mini_LaserBot"
+		CustomPawn = "Mini_JudoBotB"
 	}
 }
 
