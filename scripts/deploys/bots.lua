@@ -38,7 +38,8 @@ Mini_KnightCharge_A = Mini_KnightCharge:new{
 	TipImage = {
 		Unit = Point(2,4),
 		Enemy = Point(2,1),
-		Target = Point(2,1)
+		Target = Point(2,1),
+		CustomPawn = "Mini_KnightBot"
 	}
 }
 
@@ -113,7 +114,8 @@ Mini_Laserbeam = LaserDefault:new {
 		Enemy = Point(2,2),
 		Friendly = Point(2,1),
 		Target = Point(2,2),
-		Mountain = Point(2,0)
+		Mountain = Point(2,0),
+		CustomPawn = "Mini_LaserBot"
 	}
 }
 Mini_Laserbeam_A = Mini_Laserbeam:new{

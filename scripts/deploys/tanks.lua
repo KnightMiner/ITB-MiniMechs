@@ -37,7 +37,8 @@ Mini_Mirrorshot = TankDefault:new {
 		Unit   = Point(2,2),
 		Enemy  = Point(1,2),
 		Enemy2 = Point(4,2),
-		Target = Point(1,2)
+		Target = Point(1,2),
+		CustomPawn = "Mini_MirrorTank"
 	}
 }
 Mini_Mirrorshot_A = Mini_Mirrorshot:new{ Push = 1 }
