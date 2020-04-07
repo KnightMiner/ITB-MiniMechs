@@ -152,3 +152,159 @@ Mini_DeployLaserBot_B = Mini_DeployLaserBot:new{
 Mini_DeployLaserBot_AB = Mini_DeployLaserBot:new{
 	Deployed = "Mini_LaserBotAB"
 }
+
+-----------------------
+-- Deploy Judo-Bot --
+-----------------------
+
+--- Unit
+Mini_JudoBot = Pawn:new {
+	Name           = "Judo-Bot",
+	Health         = 1,
+	MoveSpeed      = 3,
+	Armor          = true,
+	DefaultTeam    = TEAM_PLAYER,
+	ImpactMaterial = IMPACT_METAL,
+	SkillList      = { "Mini_JudoThrow" },
+	-- display
+	Image          = "mini_judobot",
+	SoundLocation  = "/enemy/snowlaser_1/",
+	Corpse         = false
+}
+Mini_JudoBotA  = Mini_JudoBot:new { MoveSpeed = 4 }
+Mini_JudoBotB  = Mini_JudoBot:new { SkillList = { "Mini_JudoThrow_A" } }
+Mini_JudoBotAB = Mini_JudoBotB:new { MoveSpeed = 4 }
+
+--- Unit weapon
+Mini_JudoThrow = Skill:new {
+	Class       = "Unique",
+	Damage      = 0,
+	Range       = 1,
+	PowerCost   = 0,
+	Upgrades    = 1,
+	UpgradeCost = {2},
+	-- display
+	Icon = "weapons/prime_shift.png",
+	LaunchSound = "/weapons/shift",
+	TipImage = {
+		Unit   = Point(2,2),
+		Enemy  = Point(2,1),
+		Target = Point(2,3),
+		CustomPawn = "Mini_LaserBot"
+	}
+}
+Mini_JudoThrow_A = Mini_JudoThrow:new{
+	Range = 2,
+	TipImage = {
+		Unit   = Point(2,2),
+		Enemy  = Point(2,1),
+		Target = Point(2,4),
+		CustomPawn = "Mini_LaserBot"
+	}
+}
+
+-- targets landing instead of units
+function Mini_JudoThrow:GetTargetArea(point)
+	local ret = PointList()
+	for dir = DIR_START, DIR_END do
+		local side = DIR_VECTORS[dir]
+		local target = point + side
+		-- can target non-guarding pawns
+		if Board:IsPawnSpace(target) and not Board:GetPawn(target):IsGuarding() then
+			-- can land on spaces behind the mech that are open
+			local canTarget = false
+			for i = 1, self.Range do
+				local landing = point - side * i
+				if not Board:IsBlocked(landing, PATH_FLYER) then
+					ret:push_back(landing)
+					canTarget = true
+				end
+			end
+			-- add the pawn as targetable too, adds compat with old behavior
+			if canTarget then
+				ret:push_back(target)
+			end
+		end
+	end
+
+	return ret
+end
+
+-- toss units to to landing
+function Mini_JudoThrow:GetSkillEffect(p1, p2)
+	local ret = SkillEffect()
+	local dir = GetDirection(p2 - p1)
+
+	-- determine target and landing
+	local target
+	local landing = p2
+
+	-- if targeting the pawn, throw to first available space
+	if Board:IsPawnSpace(p2) then
+		target = p2
+		local offset = DIR_VECTORS[dir]
+		for i = 1, self.Range do
+			local point = p1 - offset * i
+			if not Board:IsBlocked(point, PATH_FLYER) then
+				landing = point
+				break
+			end
+		end
+	else
+		-- if targeting an empty space, that is where the unit lands, so determine target pawn
+		target = p1 - DIR_VECTORS[dir]
+	end
+
+	-- area to toss unit
+	local move = PointList()
+	move:push_back(target)
+	move:push_back(landing)
+
+	-- fake punch and toss
+	ret:AddMelee(p1, SpaceDamage(target, 0))
+	ret:AddLeap(move, FULL_DELAY)
+
+	-- damage the target after landing
+	if self.FriendlyDamage or not Board:IsPawnTeam(target, TEAM_PLAYER) then
+		ret:AddDamage(SpaceDamage(landing, self.Damage))
+	end
+	ret:AddBounce(landing, 3)
+
+	return ret
+end
+
+-- Equipable weapon
+Mini_DeployJudoBot = Deployable:new{
+	Deployed = "Mini_JudoBot",
+	PowerCost   = 2,
+	Upgrades    = 2,
+	UpgradeCost = {1,2},
+	-- visuals
+  Icon        = "weapons/deploy_mini_judobot.png",
+  Projectile  = "effects/shotup_mini_judobot.png",
+	LaunchSound = "/weapons/deploy_tank",
+	ImpactSound = "/impact/generic/mech",
+	TipImage = {
+		Unit          = Point(2,3),
+		Target        = Point(2,1),
+		Enemy         = Point(1,1),
+		Second_Origin = Point(2,1),
+		Second_Target = Point(1,1)
+	}
+}
+Mini_DeployJudoBot_A = Mini_DeployJudoBot:new{
+	Deployed = "Mini_JudoBotA"
+}
+Mini_DeployJudoBot_B = Mini_DeployJudoBot:new{
+	Deployed    = "Mini_JudoBotB",
+	TipImage = {
+		Unit          = Point(2,3),
+		Target        = Point(2,1),
+		Enemy         = Point(1,1),
+		Second_Origin = Point(2,1),
+		Second_Target = Point(4,1)
+	}
+}
+Mini_DeployJudoBot_AB = Mini_DeployJudoBot_B:new{
+	Deployed = "Mini_JudoBotAB"
+}

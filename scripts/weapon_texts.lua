@@ -46,6 +46,19 @@ return {
   Mini_DeployLaserBot_A_UpgradeDescription = "Increases the bot's move speed to 4.",
   Mini_DeployLaserBot_B_UpgradeDescription = "Increases the starting damage by 1.",
 
+  -- Judo-Bot
+  Mini_JudoThrow_Name = "Judo Fist",
+  Mini_JudoThrow_Description = "Grab a unit and toss it behind you.",
+  Mini_JudoThrow_Upgrade1 = "+1 Range",
+  Mini_JudoThrow_A_UpgradeDescription = "Increases range by 1.",
+
+  Mini_DeployJudoBot_Name = "Judo-Bot",
+  Mini_DeployJudoBot_Description = "Deploy a judo-bot to help in combat.",
+  Mini_DeployJudoBot_Upgrade1 = "+1 Move",
+  Mini_DeployJudoBot_Upgrade2 = "+1 Range",
+  Mini_DeployJudoBot_A_UpgradeDescription = "Increases the bot's move speed to 4.",
+  Mini_DeployJudoBot_B_UpgradeDescription = "Increases range by 1.",
+
   -------------
   -- Copters --
   -------------

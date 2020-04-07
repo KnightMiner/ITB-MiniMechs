@@ -47,6 +47,14 @@ function mod:init()
       Broken   = { PosX = -15, PosY = -5 },
       Icon     = {}
     },
+    {
+      Name = "mini_judobot",
+      Default  = { PosX = -15, PosY = -1 },
+      Animated = { PosX = -15, PosY = -1, NumFrames = 1 },
+      Death    = { PosX = -19, PosY = -5, NumFrames = 11, Time = 0.14, Loop = false },
+      Broken   = { PosX = -15, PosY = -1 },
+      Icon     = {}
+    },
     -- copters
     {
       Name    = "mini_smoke_copter",
@@ -81,6 +89,8 @@ function mod:init()
   sprites.addSprite("weapons", "deploy_mini_knightbot")
   sprites.addSprite("effects", "shotup_mini_laserbot")
   sprites.addSprite("weapons", "deploy_mini_laserbot")
+  sprites.addSprite("effects", "shotup_mini_judobot")
+  sprites.addSprite("weapons", "deploy_mini_judobot")
   -- copters
   sprites.addSprite("effects", "shotup_mini_smoke_copter")
   sprites.addSprite("weapons", "deploy_mini_smoke_copter")
