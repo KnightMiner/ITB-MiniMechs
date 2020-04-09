@@ -57,10 +57,10 @@ function mod:init()
     },
     {
       Name = "mini_leapbot",
-      Default  = { Height = 2, PosX = -14, PosY = -5 },
-      Animated = { Height = 2, PosX = -14, PosY = -5, NumFrames = 1 },
-      Death    = { Height = 2, PosX = -14, PosY = -5, NumFrames = 1, Time = 0.14, Loop = false },
-      Broken   = { Height = 2, PosX = -14, PosY = -5 },
+      Default  = { Height = 2, PosX = -14, PosY =  -5 },
+      Animated = { Height = 2, PosX = -15, PosY =  -5, NumFrames = 4 },
+      Death    = { Height = 2, PosX = -20, PosY = -10, NumFrames = 11, Time = 0.14, Loop = false },
+      Broken   = { Height = 2, PosX = -14, PosY =  -5 },
       Icon     = { Height = 2 }
     },
     -- copters
