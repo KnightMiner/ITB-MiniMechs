@@ -326,8 +326,9 @@ Mini_RepairDrop_A = Mini_RepairDrop:new {
 Mini_DeployRepairCopter = FlyingDeployable:new{
 	Deployed = "Mini_RepairCopter",
 	PowerCost   = 2,
-	Upgrades    = 2,
-	UpgradeCost = {1,2},
+	Upgrades     = 2,
+	UpgradeCost  = {2,2},
+	ShieldDeploy = false,
 	-- visuals
   Icon        = "weapons/deploy_mini_repair_copter.png",
   Projectile  = "effects/shotup_mini_repair_copter.png",
@@ -342,14 +343,7 @@ Mini_DeployRepairCopter = FlyingDeployable:new{
 	}
 }
 Mini_DeployRepairCopter_A = Mini_DeployRepairCopter:new{
-	MoveCopter = true,
-	TipImage = {
-		Unit             = Point(1,3),
-		Target           = Point(1,1),
-		Friendly_Damaged = Point(2,1),
-		Second_Origin    = Point(2,1),
-		Second_Target    = Point(4,1)
-	}
+	ShieldDeploy = true
 }
 Mini_DeployRepairCopter_B = Mini_DeployRepairCopter:new{
 	Deployed = "Mini_RepairCopterB",
@@ -362,40 +356,23 @@ Mini_DeployRepairCopter_B = Mini_DeployRepairCopter:new{
 		Second_Target     = Point(4,1)
 	}
 }
-Mini_DeployRepairCopter_AB = Mini_DeployRepairCopter_A:new{
-	MoveCopter = false,
-	Deployed = "Mini_RepairCopterB",
-	TipImage = {
-		Unit              = Point(1,3),
-		Target            = Point(1,1),
-		Friendly_Damaged  = Point(3,1),
-		Friendly2_Damaged = Point(2,1),
-		Second_Origin     = Point(1,1),
-		Second_Target     = Point(4,1)
-	}
+Mini_DeployRepairCopter_AB = Mini_DeployRepairCopter_B:new{
+	ShieldDeploy = true,
+	Deployed = "Mini_RepairCopterB"
 }
--- push upgrade
-local TOOLTIP_SIZE = Point(6,6)
-function Mini_DeployRepairCopter_A:GetSkillEffect(p1, p2)
+-- shield upgrade
+function Mini_DeployRepairCopter:GetSkillEffect(p1, p2)
 	local ret = SkillEffect()
 	-- add copter
 	local damage = SpaceDamage(p2,0)
 	damage.sPawn = self.Deployed
 	ret:AddArtillery(damage,self.Projectile)
-	-- push to the sides
-	local dir = GetDirection(p2 - p1)
-	for i = -1, 1, 2 do
-		local pushDir = (dir + i) % 4
-		local push = SpaceDamage(p2 + DIR_VECTORS[pushDir], 0, pushDir)
-		push.sAnimation = "airpush_"..pushDir
-		ret:AddDamage(push)
+	-- add shield if requested
+	if self.ShieldDeploy then
+		damage = SpaceDamage(p2, 0)
+		damage.iShield = EFFECT_CREATE
+		ret:AddDamage(damage)
 	end
-	-- copter landing pushed the repair target away, so push it for tooltips
-	if self.MoveCopter and Board:GetSize() == TOOLTIP_SIZE then
-		ret:AddDelay(0.5)
-		local move = SpaceDamage(p2, 0, DIR_RIGHT)
-		move.bHide = true
-		ret:AddDamage(move)
-	end
+
 	return ret
 end

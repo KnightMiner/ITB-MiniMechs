@@ -110,8 +110,8 @@ return {
 
   Mini_DeployRepairCopter_Name = "Repair Copter",
   Mini_DeployRepairCopter_Description = "Deploy a repair copter to help in combat.",
-  Mini_DeployRepairCopter_Upgrade1 = "Push",
+  Mini_DeployRepairCopter_Upgrade1 = "Shield",
   Mini_DeployRepairCopter_Upgrade2 = "+1 Range",
-  Mini_DeployRepairCopter_A_UpgradeDescription = "Pushes to the sides when deploying.",
+  Mini_DeployRepairCopter_A_UpgradeDescription = "Copter starts with a shield.",
   Mini_DeployRepairCopter_B_UpgradeDescription = "Increases potential repair range by 1.",
 }
