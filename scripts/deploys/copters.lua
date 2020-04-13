@@ -224,7 +224,7 @@ Mini_NapalmBombs_A = Mini_NapalmBombs:new {
 -- Equipable weapon
 Mini_DeployNapalmCopter = FlyingDeployable:new{
 	Deployed = "Mini_NapalmCopter",
-	PowerCost   = 2,
+	PowerCost   = 1,
 	Upgrades    = 2,
 	UpgradeCost = {1,2},
 	-- visuals
@@ -325,7 +325,7 @@ Mini_RepairDrop_A = Mini_RepairDrop:new {
 -- Equipable weapon
 Mini_DeployRepairCopter = FlyingDeployable:new{
 	Deployed = "Mini_RepairCopter",
-	PowerCost   = 2,
+	PowerCost    = 1,
 	Upgrades     = 2,
 	UpgradeCost  = {2,2},
 	ShieldDeploy = false,
