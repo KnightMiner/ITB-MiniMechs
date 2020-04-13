@@ -114,6 +114,19 @@ function mod:init()
   sprites.addSprite("effects", "shotup_mini_repair_copter")
   sprites.addSprite("weapons", "deploy_mini_repair_copter")
   sprites.addSprite("weapons", "mini_repair_drop")
+  -- animations
+  sprites.addAnimation("effects", "mini_raining_smoke", {
+    NumFrames = 6,
+    Time = 0.045,
+    PosX = -20,
+    PosY = -38
+  })
+  sprites.addAnimation("effects", "mini_raining_health", {
+    NumFrames = 3,
+    Time = 0.0225,
+    PosX = -20,
+    PosY = -38
+  })
 
   -- deploys
   self:loadScript("deploys/tanks")

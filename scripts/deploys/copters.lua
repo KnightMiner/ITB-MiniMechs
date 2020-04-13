@@ -97,11 +97,12 @@ Mini_SmokeCopterB  = Mini_SmokeCopter:new { SkillList = { "Mini_SmokeBombs_A" } 
 Mini_SmokeCopterAB = Mini_SmokeCopter:new { IgnoreSmoke = true, SkillList = { "Mini_SmokeBombs_A" } }
 
 Mini_SmokeBombs = Mini_Leap_Attack:new {
-	Smoke       = 1,
-	Upgrades    = 1,
-	UpgradeCost = {2},
-	Icon        = "weapons/support_smoke.png",
-	TipImage = {
+	Smoke           = 1,
+	Upgrades        = 1,
+	UpgradeCost     = {2},
+	Icon            = "weapons/support_smoke.png",
+	AttackAnimation = "mini_raining_smoke",
+	TipImage        = {
 		Unit       = Point(2,3),
 		Enemy      = Point(2,2),
 		Target     = Point(2,1),
@@ -295,14 +296,15 @@ Mini_RepairCopter = Pawn:new {
 Mini_RepairCopterB  = Mini_RepairCopter:new { SkillList = { "Mini_RepairDrop_A" } }
 
 Mini_RepairDrop = Mini_Leap_Attack:new {
-	Damage      = -1,
-	Fire        = EFFECT_REMOVE,
-	Acid        = EFFECT_REMOVE,
-	TargetEmpty = false,
-	Upgrades    = 1,
-	UpgradeCost = {2},
-	Icon        = "weapons/mini_repair_drop.png",
-	TipImage = {
+	Damage          = -1,
+	Fire            = EFFECT_REMOVE,
+	Acid            = EFFECT_REMOVE,
+	TargetEmpty     = false,
+	Upgrades        = 1,
+	UpgradeCost     = {2},
+	Icon            = "weapons/mini_repair_drop.png",
+	AttackAnimation = "mini_raining_health",
+	TipImage        = {
 		Unit             = Point(2,3),
 		Friendly_Damaged = Point(2,2),
 		Target           = Point(2,1),
