@@ -292,17 +292,15 @@ Mini_RepairCopter = Pawn:new {
 	SoundLocation  = "/support/support_drone",
 	Corpse         = false
 }
-Mini_RepairCopterA  = Mini_RepairCopter:new { SkillList = { "Mini_RepairDrop_A" } }
-Mini_RepairCopterB  = Mini_RepairCopter:new { SkillList = { "Mini_RepairDrop_B" } }
-Mini_RepairCopterAB = Mini_RepairCopter:new { SkillList = { "Mini_RepairDrop_AB" } }
+Mini_RepairCopterB  = Mini_RepairCopter:new { SkillList = { "Mini_RepairDrop_A" } }
 
 Mini_RepairDrop = Mini_Leap_Attack:new {
 	Damage      = -1,
 	Fire        = EFFECT_REMOVE,
 	Acid        = EFFECT_REMOVE,
 	TargetEmpty = false,
-	Upgrades    = 2,
-	UpgradeCost = {1,2},
+	Upgrades    = 1,
+	UpgradeCost = {2},
 	Icon        = "weapons/mini_repair_drop.png",
 	TipImage = {
 		Unit             = Point(2,3),
@@ -312,9 +310,6 @@ Mini_RepairDrop = Mini_Leap_Attack:new {
 	}
 }
 Mini_RepairDrop_A = Mini_RepairDrop:new {
-	Damage = -2
-}
-Mini_RepairDrop_B = Mini_RepairDrop:new {
 	Range = 3,
 	TipImage = {
 		Unit              = Point(2,3),
@@ -323,10 +318,6 @@ Mini_RepairDrop_B = Mini_RepairDrop:new {
 		Target            = Point(2,0),
 		CustomPawn        = "Mini_RepairCopterB"
 	}
-}
-Mini_RepairDrop_AB = Mini_RepairDrop_B:new {
-	Damage = -2,
-	Range = 3
 }
 
 -- Equipable weapon
@@ -349,14 +340,13 @@ Mini_DeployRepairCopter = FlyingDeployable:new{
 	}
 }
 Mini_DeployRepairCopter_A = Mini_DeployRepairCopter:new{
-	Deployed = "Mini_RepairCopterA",
+	MoveCopter = true,
 	TipImage = {
 		Unit             = Point(1,3),
 		Target           = Point(1,1),
-		Fire             = Point(1,1),
 		Friendly_Damaged = Point(2,1),
-		Second_Origin    = Point(1,1),
-		Second_Target    = Point(3,1)
+		Second_Origin    = Point(2,1),
+		Second_Target    = Point(4,1)
 	}
 }
 Mini_DeployRepairCopter_B = Mini_DeployRepairCopter:new{
@@ -364,21 +354,46 @@ Mini_DeployRepairCopter_B = Mini_DeployRepairCopter:new{
 	TipImage = {
 		Unit              = Point(1,3),
 		Target            = Point(1,1),
-		Friendly_Damaged  = Point(2,1),
-		Friendly2_Damaged = Point(3,1),
+		Friendly_Damaged  = Point(3,1),
+		Friendly2_Damaged = Point(2,1),
 		Second_Origin     = Point(1,1),
 		Second_Target     = Point(4,1)
 	}
 }
-Mini_DeployRepairCopter_AB = Mini_DeployRepairCopter:new{
-	Deployed = "Mini_RepairCopterAB",
+Mini_DeployRepairCopter_AB = Mini_DeployRepairCopter_A:new{
+	MoveCopter = false,
+	Deployed = "Mini_RepairCopterB",
 	TipImage = {
 		Unit              = Point(1,3),
 		Target            = Point(1,1),
-		Fire              = Point(1,1),
-		Friendly_Damaged  = Point(2,1),
-		Friendly2_Damaged = Point(3,1),
+		Friendly_Damaged  = Point(3,1),
+		Friendly2_Damaged = Point(2,1),
 		Second_Origin     = Point(1,1),
 		Second_Target     = Point(4,1)
 	}
 }
+-- push upgrade
+local TOOLTIP_SIZE = Point(6,6)
+function Mini_DeployRepairCopter_A:GetSkillEffect(p1, p2)
+	local ret = SkillEffect()
+	-- add copter
+	local damage = SpaceDamage(p2,0)
+	damage.sPawn = self.Deployed
+	ret:AddArtillery(damage,self.Projectile)
+	-- push to the sides
+	local dir = GetDirection(p2 - p1)
+	for i = -1, 1, 2 do
+		local pushDir = (dir + i) % 4
+		local push = SpaceDamage(p2 + DIR_VECTORS[pushDir], 0, pushDir)
+		push.sAnimation = "airpush_"..pushDir
+		ret:AddDamage(push)
+	end
+	-- copter landing pushed the repair target away, so push it for tooltips
+	if self.MoveCopter and Board:GetSize() == TOOLTIP_SIZE then
+		ret:AddDelay(0.5)
+		local move = SpaceDamage(p2, 0, DIR_RIGHT)
+		move.bHide = true
+		ret:AddDamage(move)
+	end
+	return ret
+end

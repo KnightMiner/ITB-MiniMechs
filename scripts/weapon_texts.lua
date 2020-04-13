@@ -105,15 +105,13 @@ return {
   -- Repair Copter
   Mini_RepairDrop_Name = "Repair Drop",
   Mini_RepairDrop_Description = "Fly over the targets while repairing them.",
-  Mini_RepairDrop_Upgrade1 = "+1 Repair",
-  Mini_RepairDrop_Upgrade2 = "+1 Range",
-  Mini_RepairDrop_A_UpgradeDescription = "Repairs 2 damage instead of 1.",
+  Mini_RepairDrop_Upgrade1 = "+1 Range",
   Mini_RepairDrop_A_UpgradeDescription = "Increases potential range by 1.",
 
   Mini_DeployRepairCopter_Name = "Repair Copter",
   Mini_DeployRepairCopter_Description = "Deploy a repair copter to help in combat.",
-  Mini_DeployRepairCopter_Upgrade1 = "+1 Repair",
+  Mini_DeployRepairCopter_Upgrade1 = "Push",
   Mini_DeployRepairCopter_Upgrade2 = "+1 Range",
-  Mini_DeployRepairCopter_A_UpgradeDescription = "Repairs 2 damage instead of 1.",
+  Mini_DeployRepairCopter_A_UpgradeDescription = "Pushes to the sides when deploying.",
   Mini_DeployRepairCopter_B_UpgradeDescription = "Increases potential repair range by 1.",
 }
