@@ -121,10 +121,27 @@ function mod:init()
   self:loadScript("deploys/copters")
 
   -- texts
-  modApi:addWeapon_Texts(self:loadScript("weapon_texts"))
+  local texts = self:loadScript("weapon_texts")
+  modApi:addWeapon_Texts(texts)
+
+  -- add weapons to the shop
+  local shop = self:loadScript("libs/shop")
+  for _, id in ipairs({
+    "Mini_DeployKnightBot", "Mini_DeployLaserBot", "Mini_DeployJudoBot", "Mini_DeployLeapBot",
+    "Mini_DeploySmokeCopter", "Mini_DeployNapalmCopter", "Mini_DeployRepairCopter",
+    "Mini_DeployMirrorTank"
+  }) do
+    local name = texts[id .. "_Name"]
+    shop:addWeapon({
+      id = id,
+      name = "Add Deploy " .. name .. " to runs",
+      desc = "Add Deploy " .. name .. " to the store, timepods, and perfect island rewards."
+    })
+  end
 end
 
 function mod:load(options,version)
+  self:loadScript("libs/shop"):load(options)
 end
 
 return mod
