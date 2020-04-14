@@ -101,3 +101,54 @@ Mini_DeployMirrorTank_B = Mini_DeployMirrorTank:new{
 Mini_DeployMirrorTank_AB = Mini_DeployMirrorTank:new{
 	Deployed = "Mini_MirrorTankAB"
 }
+
+--------------------------
+-- Deploy Shrapnel Tank --
+--------------------------
+
+--- Unit
+Mini_ShrapnelTank = Pawn:new {
+	Name           = "Shrapnel Tank",
+	Health         = 1,
+	MoveSpeed      = 3,
+	DefaultTeam    = TEAM_PLAYER,
+	ImpactMaterial = IMPACT_METAL,
+	SkillList      = { "Brute_Shrapnel" },
+	-- display
+	Image          = "mini_shrapneltank",
+	SoundLocation  = "/mech/brute/tank",
+	Corpse         = false
+}
+Mini_ShrapnelTankA  = Mini_ShrapnelTank:new { Health = 3 }
+Mini_ShrapnelTankB  = Mini_ShrapnelTank:new { MoveSpeed = 4 }
+Mini_ShrapnelTankAB = Mini_ShrapnelTank:new { Health = 3, MoveSpeed = 4 }
+
+-- Equipable weapon
+Mini_DeployShrapnelTank = Deployable:new{
+	Deployed = "Mini_ShrapnelTank",
+	PowerCost   = 2,
+	Upgrades    = 2,
+	UpgradeCost = {1,2},
+	-- visuals
+  Icon        = "weapons/deploy_mini_shrapneltank.png",
+  Projectile  = "effects/shotup_mini_shrapneltank.png",
+	LaunchSound = "/weapons/deploy_tank",
+	ImpactSound = "/impact/generic/mech",
+	TipImage = {
+		Unit          = Point(1,3),
+		Target        = Point(1,1),
+		Enemy         = Point(2,1),
+		Enemy2        = Point(2,2),
+		Second_Origin = Point(1,1),
+		Second_Target = Point(2,1)
+	},
+}
+Mini_DeployShrapnelTank_A = Mini_DeployShrapnelTank:new{
+	Deployed = "Mini_ShrapnelTankA"
+}
+Mini_DeployShrapnelTank_B = Mini_DeployShrapnelTank:new{
+	Deployed = "Mini_ShrapnelTankB"
+}
+Mini_DeployShrapnelTank_AB = Mini_DeployShrapnelTank:new{
+	Deployed = "Mini_ShrapnelTankAB"
+}

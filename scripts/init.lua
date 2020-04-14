@@ -30,6 +30,14 @@ function mod:init()
       Broken   = { PosX = -21, PosY =  3 },
       Icon     = {}
     },
+    {
+      Name = "mini_shrapneltank",
+      Default  = { PosX = -15, PosY = 7 },
+      Animated = { PosX = -15, PosY = 7, NumFrames = 2 },
+      Death    = { PosX = -21, PosY = 3, NumFrames = 11, Time = 0.14, Loop = false },
+      Broken   = { PosX = -21, PosY = 3 },
+      Icon     = {}
+    },
     -- bots
     {
       Name = "mini_knightbot",
@@ -92,6 +100,8 @@ function mod:init()
   -- tanks
   sprites.addSprite("effects", "shotup_mini_mirrortank")
   sprites.addSprite("weapons", "deploy_mini_mirrortank")
+  sprites.addSprite("effects", "shotup_mini_shrapneltank")
+  sprites.addSprite("weapons", "deploy_mini_shrapneltank")
   -- bots
   sprites.addSprite("effects", "shotup_mini_knightbot1")
   sprites.addSprite("effects", "shotup_mini_knightbot2")

@@ -16,6 +16,14 @@ return {
   Mini_DeployMirrorTank_A_UpgradeDescription = "Increases the tank's max health to 3.",
   Mini_DeployMirrorTank_B_UpgradeDescription = "The tank's attacks also pushes its target.",
 
+  -- Shrapnel Tank
+  Mini_DeployShrapnelTank_Name = "Shrapnel Tank",
+  Mini_DeployShrapnelTank_Description = "Deploy a shrapnel tank to help in combat.",
+  Mini_DeployShrapnelTank_Upgrade1 = "+2 Health",
+  Mini_DeployShrapnelTank_Upgrade2 = "+1 Move",
+  Mini_DeployShrapnelTank_A_UpgradeDescription = "Increases the tank's max health to 3.",
+  Mini_DeployShrapnelTank_B_UpgradeDescription = "Increases the tank's move speed to 4.",
+
   ----------
   -- Bots --
   ----------
