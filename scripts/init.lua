@@ -152,7 +152,7 @@ function mod:init()
   for _, id in ipairs({
     "Mini_DeployKnightBot", "Mini_DeployLaserBot", "Mini_DeployJudoBot", "Mini_DeployLeapBot",
     "Mini_DeploySmokeCopter", "Mini_DeployNapalmCopter", "Mini_DeployRepairCopter",
-    "Mini_DeployMirrorTank"
+    "Mini_DeployMirrorTank", "Mini_DeployShrapnelTank"
   }) do
     local name = texts[id .. "_Name"]
     shop:addWeapon({

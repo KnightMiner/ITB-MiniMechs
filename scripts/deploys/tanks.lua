@@ -128,7 +128,7 @@ Mini_DeployShrapnelTank = Deployable:new{
 	Deployed = "Mini_ShrapnelTank",
 	PowerCost   = 2,
 	Upgrades    = 2,
-	UpgradeCost = {1,2},
+	UpgradeCost = {1,1},
 	-- visuals
   Icon        = "weapons/deploy_mini_shrapneltank.png",
   Projectile  = "effects/shotup_mini_shrapneltank.png",
