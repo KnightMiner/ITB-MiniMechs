@@ -95,6 +95,15 @@ function mod:init()
       Death    = { PosX = -19, PosY = 9, NumFrames = 11, Time = 0.14, Loop = false },
       Broken   = { PosX = -19, PosY = 9 },
       Icon     = {}
+    },
+    -- artillery
+    {
+      Name    = "mini_freeze_artillery",
+      Default  = { PosX = -15, PosY =  7 },
+      Animated = { PosX = -15, PosY =  6, NumFrames = 4 },
+      Death    = { PosX = -19, PosY = -2, NumFrames = 11, Time = 0.14, Loop = false },
+      Broken   = { PosX = -19, PosY = -2 },
+      Icon     = {}
     }
   )
   -- tanks
@@ -124,6 +133,11 @@ function mod:init()
   sprites.addSprite("effects", "shotup_mini_repair_copter")
   sprites.addSprite("weapons", "deploy_mini_repair_copter")
   sprites.addSprite("weapons", "mini_repair_drop")
+  -- artillery
+  sprites.addSprite("effects", "shotup_mini_freeze_artillery")
+  sprites.addSprite("effects", "shotup_mini_freeze_mine")
+  sprites.addSprite("weapons", "deploy_mini_freeze_artillery")
+  sprites.addSprite("weapons", "deploy_mini_freeze_mine")
   -- animations
   sprites.addAnimation("effects", "mini_raining_smoke", {
     NumFrames = 6,
@@ -142,6 +156,7 @@ function mod:init()
   self:loadScript("deploys/tanks")
   self:loadScript("deploys/bots")
   self:loadScript("deploys/copters")
+  self:loadScript("deploys/artillery")
 
   -- texts
   local texts = self:loadScript("weapon_texts")
@@ -152,7 +167,8 @@ function mod:init()
   for _, id in ipairs({
     "Mini_DeployKnightBot", "Mini_DeployLaserBot", "Mini_DeployJudoBot", "Mini_DeployLeapBot",
     "Mini_DeploySmokeCopter", "Mini_DeployNapalmCopter", "Mini_DeployRepairCopter",
-    "Mini_DeployMirrorTank", "Mini_DeployShrapnelTank"
+    "Mini_DeployMirrorTank", "Mini_DeployShrapnelTank",
+    "Mini_DeployFreezeArtillery"
   }) do
     local name = texts[id .. "_Name"]
     shop:addWeapon({

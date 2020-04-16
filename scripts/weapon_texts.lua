@@ -122,4 +122,21 @@ return {
   Mini_DeployRepairCopter_Upgrade2 = "+1 Range",
   Mini_DeployRepairCopter_A_UpgradeDescription = "Copter starts with a shield.",
   Mini_DeployRepairCopter_B_UpgradeDescription = "Increases potential repair range by 1.",
+
+  ---------------
+  -- Artillery --
+  ---------------
+
+  -- Freeze Artillery
+  Mini_DeployFreezeMine_Name = "Freeze Mine",
+  Mini_DeployFreezeMine_Description = "Fires a freeze mine onto the targeted space.",
+  Mini_DeployFreezeMine_Upgrade1 = "Back Freeze",
+  Mini_DeployFreezeMine_A_UpgradeDescription = "Freezes the tile behind the artillery when firing.",
+
+  Mini_DeployFreezeArtillery_Name = "Freeze Artillery",
+  Mini_DeployFreezeArtillery_Description = "Deploy a freeze artillery to help in combat.",
+  Mini_DeployFreezeArtillery_Upgrade1 = "Armor",
+  Mini_DeployFreezeArtillery_Upgrade2 = "Back Freeze",
+  Mini_DeployFreezeArtillery_A_UpgradeDescription = "Artillery will be armored.",
+  Mini_DeployFreezeArtillery_B_UpgradeDescription = "Freezes the tile behind the artillery when firing.",
 }
