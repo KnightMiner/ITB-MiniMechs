@@ -112,6 +112,19 @@ function mod:init()
       Death    = { PosX = -19, PosY = -2, NumFrames = 11, Time = 0.14, Loop = false },
       Broken   = { PosX = -19, PosY = -2 },
       Icon     = {}
+    },
+    {
+      Name    = "mini_rock_artillery",
+      Default  = { PosX = -15, PosY =  7 },
+      Animated = { PosX = -15, PosY =  6, NumFrames = 4 },
+      Death    = { PosX = -19, PosY = -2, NumFrames = 11, Time = 0.14, Loop = false },
+      Broken   = { PosX = -19, PosY = -2 },
+      Icon     = {}
+    },
+    {
+      Name    = "mini_volcano_rock",
+      Default = { PosX = -18, PosY = -1 },
+      Death   = { PosX = -34, PosY = -9, NumFrames = 13, Time = 0.09, Loop = false }
     }
   )
   -- tanks
@@ -148,6 +161,9 @@ function mod:init()
   sprites.addSprite("effects", "shotup_mini_freeze_mine")
   sprites.addSprite("weapons", "deploy_mini_freeze_artillery")
   sprites.addSprite("weapons", "deploy_mini_freeze_mine")
+  sprites.addSprite("effects", "shotup_mini_rock_artillery")
+  sprites.addSprite("effects", "shotup_mini_volcano_rock")
+  sprites.addSprite("weapons", "deploy_mini_rock_artillery")
   -- animations
   sprites.addAnimation("effects", "mini_raining_smoke", {
     NumFrames = 6,

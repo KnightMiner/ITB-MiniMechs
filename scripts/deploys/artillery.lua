@@ -230,3 +230,132 @@ Mini_DeployFreezeArtillery_B = Mini_DeployFreezeArtillery:new{
 Mini_DeployFreezeArtillery_AB = Mini_DeployFreezeArtillery_B:new{
 	Deployed = "Mini_FreezeArtilleryAB"
 }
+
+--------------------
+-- Rock Artillery --
+--------------------
+
+--- Unit
+Mini_RockArtillery = Pawn:new {
+	Name           = "Rock Artillery",
+	Health         = 1,
+	MoveSpeed      = 2,
+	DefaultTeam    = TEAM_PLAYER,
+	ImpactMaterial = IMPACT_METAL,
+	SkillList      = { "Mini_RockThrow" },
+	-- display
+	Image          = "mini_rock_artillery",
+	SoundLocation  = "/mech/distance/artillery/",
+	Corpse         = false
+}
+Mini_RockArtilleryA  = Mini_RockArtillery:new { Armor = true }
+Mini_RockArtilleryB  = Mini_RockArtillery:new { SkillList = { "Mini_RockThrow_A" } }
+Mini_RockArtilleryAB = Mini_RockArtilleryB:new { Armor = true }
+
+-- like normal rock, but fire immune
+Mini_VolcanoRock = RockThrown:new {
+	Name = "Volcano Boulder",
+	Image = "mini_volcano_rock",
+	IgnoreFire = true
+}
+
+--- Unit weapon
+Mini_RockThrow = ArtilleryDefault:new{
+	Class = "Unique",
+	Damage = 2,
+	PowerCost = 0,
+	ArtilleryStart = 2,
+	ArtillerySize = 8,
+	-- upgrades
+	Fire = false,
+	Rock = "RockThrown",
+	RockAnimation = "rock1d",
+	Upgrades = 1,
+	UpgradeCost = {2},
+	-- Display
+	Explosion = "",
+	BounceAmount = 1,
+	Sound = "",
+	Icon = "weapons/ranged_rockthrow.png",
+	Projectile = "effects/shotdown_rock.png",
+	LaunchSound = "/weapons/boulder_throw",
+	ImpactSound = "/impact/dynamic/rock",
+	TipImage = {
+		Unit = Point(2,4),
+		Enemy = Point(2,1),
+		Target = Point(2,1),
+		CustomPawn = "Mini_RockArtillery",
+	}
+}
+Mini_RockThrow_A = Mini_RockThrow:new{
+	Fire = true,
+	BounceAmount = 2,
+	Rock = "Mini_VolcanoRock",
+	RockAnimation = "mini_volcano_rockd",
+	Projectile = "effects/shotup_mini_volcano_rock.png",
+	TipImage = {
+		Unit = Point(2,4),
+		Enemy = Point(2,1),
+		Target = Point(2,1),
+		CustomPawn = "Mini_RockArtilleryB",
+	}
+}
+function Mini_RockThrow:GetSkillEffect(p1,p2)
+	local ret = SkillEffect()
+	local dir = GetDirection(p2 - p1)
+	local damage = SpaceDamage(p2, self.Damage)
+	if self.Fire then
+		damage.iFire = EFFECT_CREATE
+	end
+	if not Board:IsBlocked(p2, PATH_PROJECTILE) then
+		damage.sPawn = self.Rock
+		damage.sAnimation = ""
+		damage.iDamage = 0
+	else
+		damage.sAnimation = self.RockAnimation
+	end
+
+	ret:AddBounce(p1, 1)
+	ret:AddArtillery(damage, self.Projectile)
+	ret:AddBounce(p2, self.BounceAmount)
+	ret:AddBoardShake(0.15)
+
+	return ret
+end
+
+-- Equipable weapon
+Mini_DeployRockArtillery = Deployable:new{
+	Deployed = "Mini_RockArtillery",
+	PowerCost   = 2,
+	Upgrades    = 2,
+	UpgradeCost = {1,2},
+	-- visuals
+  Icon        = "weapons/deploy_mini_rock_artillery.png",
+  Projectile  = "effects/shotup_mini_rock_artillery.png",
+	LaunchSound = "/weapons/deploy_tank",
+	ImpactSound = "/impact/generic/mech",
+	TipImage = {
+		Unit          = Point(1,3),
+		Target        = Point(1,1),
+		Enemy         = Point(3,1),
+		Second_Origin = Point(1,1),
+		Second_Target = Point(3,1)
+	}
+}
+Mini_DeployRockArtillery_A = Mini_DeployRockArtillery:new{
+	Deployed = "Mini_RockArtilleryA"
+}
+Mini_DeployRockArtillery_B = Mini_DeployRockArtillery:new{
+	Deployed = "Mini_RockArtilleryB",
+	TipImage = {
+		Unit          = Point(1,3),
+		Target        = Point(1,1),
+		Enemy         = Point(3,1),
+		Enemy2        = Point(3,2),
+		Second_Origin = Point(1,1),
+		Second_Target = Point(3,1)
+	}
+}
+Mini_DeployRockArtillery_AB = Mini_DeployRockArtillery_B:new{
+	Deployed = "Mini_RockArtilleryAB"
+}

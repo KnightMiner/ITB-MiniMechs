@@ -152,4 +152,17 @@ return {
   Mini_DeployFreezeArtillery_Upgrade2 = "Back Freeze",
   Mini_DeployFreezeArtillery_A_UpgradeDescription = "Artillery will be armored.",
   Mini_DeployFreezeArtillery_B_UpgradeDescription = "Freezes the tile behind the artillery when firing.",
+
+  -- Rock Artillery
+  Mini_RockThrow_Name = "Rock Launcher",
+  Mini_RockThrow_Description = "Launch a rock at a tile",
+  Mini_RockThrow_Upgrade1 = "Volcano",
+  Mini_RockThrow_A_UpgradeDescription = "Fires a volcano rock that is immune to fire and ignites targets.",
+
+  Mini_DeployRockArtillery_Name = "Rock Artillery",
+  Mini_DeployRockArtillery_Description = "Deploy a rock artillery to help in combat.",
+  Mini_DeployRockArtillery_Upgrade1 = "Armor",
+  Mini_DeployRockArtillery_Upgrade2 = "Volcano",
+  Mini_DeployRockArtillery_A_UpgradeDescription = "Artillery will be armored.",
+  Mini_DeployRockArtillery_B_UpgradeDescription = "Fires a volcano rock that is immune to fire and ignites targets.",
 }
