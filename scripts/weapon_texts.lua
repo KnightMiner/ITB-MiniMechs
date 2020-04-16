@@ -127,6 +127,19 @@ return {
   -- Artillery --
   ---------------
 
+  -- Unstable Artillery
+  Mini_UnstableArtShot_Name = "Unstable Artillery",
+  Mini_UnstableArtShot_Description = "Strong artillery strike, damaging and pushing a single tile, but pushing the artillery back as well.",
+  Mini_UnstableArtShot_Upgrade1 = "Double Shot",
+  Mini_UnstableArtShot_A_UpgradeDescription = "Can fire twice if the unit does not move.",
+
+  Mini_DeployUnstableArtillery_Name = "Unstable Artillery",
+  Mini_DeployUnstableArtillery_Description = "Deploy an unstable artillery to help in combat.",
+  Mini_DeployUnstableArtillery_Upgrade1 = "Armor",
+  Mini_DeployUnstableArtillery_Upgrade2 = "Double Shot",
+  Mini_DeployUnstableArtillery_A_UpgradeDescription = "Artillery will be armored.",
+  Mini_DeployUnstableArtillery_B_UpgradeDescription = "Artillery can fire twice if it does not move.",
+
   -- Freeze Artillery
   Mini_DeployFreezeMine_Name = "Freeze Mine",
   Mini_DeployFreezeMine_Description = "Fires a freeze mine onto the targeted space.",

@@ -1,3 +1,110 @@
+------------------------
+-- Unstable Artillery --
+------------------------
+
+--- Unit
+Mini_UnstableArtillery = Pawn:new {
+	Name           = "Unstable Artillery",
+	Health         = 1,
+	MoveSpeed      = 2,
+	DefaultTeam    = TEAM_PLAYER,
+	ImpactMaterial = IMPACT_METAL,
+	SkillList      = { "Mini_UnstableArtShot" },
+	-- display
+	Image          = "mini_unstable_artillery",
+	SoundLocation  = "/mech/distance/artillery/",
+	Corpse         = false
+}
+Mini_UnstableArtilleryA  = Mini_UnstableArtillery:new { Armor = true }
+Mini_UnstableArtilleryB  = Mini_UnstableArtillery:new { SkillList = { "Mini_UnstableArtShot_A" } }
+Mini_UnstableArtilleryAB = Mini_UnstableArtillery:new { Armor = true, SkillList = { "Mini_UnstableArtShot_A" } }
+
+--- Unit weapon
+Mini_UnstableArtShot = LineArtillery:new{
+	Class = "Unique",
+	Range = RANGE_ARTILLERY,
+	Damage = 1,
+	-- upgrades
+	DoubleShot = false,
+	Upgrades    = 1,
+	UpgradeCost = {2},
+	-- Display
+	Explosion = "ExploArt1",
+	Icon = "weapons/ranged_artillery.png",
+	UpShot = "effects/shotup_tribomb_missile.png",
+	LaunchSound = "/support/civilian_artillery/fire",
+	ImpactSound = "/impact/generic/explosion",
+	TipImage = {
+		Unit = Point(2,3),
+		Enemy = Point(2,1),
+		Target = Point(2,1),
+		CustomPawn = "Mini_UnstableArtillery",
+	}
+}
+Mini_UnstableArtShot_A = Mini_UnstableArtShot:new{
+	Double = true
+}
+
+function Mini_UnstableArtShot:GetSkillEffect(p1, p2)
+	local ret = SkillEffect()
+	local dir = GetDirection(p2-p1)
+
+	-- artillery shot
+	ret:AddArtillery(SpaceDamage(p2, self.Damage, dir), self.UpShot, 0.5)
+
+	-- push self back
+	ret:AddDamage(SpaceDamage(p1, 0, (dir + 2) % 4))
+
+	-- second artillery shot
+	if self.Double then
+		local double = p2 + DIR_VECTORS[dir]
+		if Board:IsValid(double) then
+			local secondShot = SpaceDamage(double, self.Damage, dir)
+			secondShot.bHidePath = true
+			ret:AddArtillery(secondShot, self.UpShot, FULL_DELAY)
+			if not Board:IsBlocked(double, PATH_FLYER) then
+				-- fake move so the tooltip looks right
+				-- both missiles will hit the target basically
+				local move = PointList()
+				move:push_back(p2)
+				move:push_back(double)
+				ret:AddMove(move, FULL_DELAY)
+			end
+		end
+	end
+
+	return ret
+end
+
+-- Equipable weapon
+Mini_DeployUnstableArtillery = Deployable:new{
+	Deployed = "Mini_UnstableArtillery",
+	PowerCost   = 2,
+	Upgrades    = 2,
+	UpgradeCost = {1,2},
+	-- visuals
+  Icon        = "weapons/deploy_mini_unstable_artillery.png",
+  Projectile  = "effects/shotup_mini_unstable_artillery.png",
+	LaunchSound = "/weapons/deploy_tank",
+	ImpactSound = "/impact/generic/mech",
+	TipImage = {
+		Unit          = Point(1,3),
+		Target        = Point(1,1),
+		Enemy         = Point(3,1),
+		Second_Origin = Point(1,1),
+		Second_Target = Point(3,1)
+	},
+}
+Mini_DeployUnstableArtillery_A = Mini_DeployUnstableArtillery:new{
+	Deployed = "Mini_UnstableArtilleryA"
+}
+Mini_DeployUnstableArtillery_B = Mini_DeployUnstableArtillery:new{
+	Deployed = "Mini_UnstableArtilleryB"
+}
+Mini_DeployUnstableArtillery_AB = Mini_DeployUnstableArtillery:new{
+	Deployed = "Mini_UnstableArtilleryAB"
+}
+
 ----------------------
 -- Freeze Artillery --
 ----------------------

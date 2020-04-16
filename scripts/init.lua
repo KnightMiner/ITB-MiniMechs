@@ -98,6 +98,14 @@ function mod:init()
     },
     -- artillery
     {
+      Name    = "mini_unstable_artillery",
+      Default  = { PosX = -15, PosY =  7 },
+      Animated = { PosX = -15, PosY =  6, NumFrames = 4 },
+      Death    = { PosX = -19, PosY = -2, NumFrames = 11, Time = 0.14, Loop = false },
+      Broken   = { PosX = -19, PosY = -2 },
+      Icon     = {}
+    },
+    {
       Name    = "mini_freeze_artillery",
       Default  = { PosX = -15, PosY =  7 },
       Animated = { PosX = -15, PosY =  6, NumFrames = 4 },
@@ -134,6 +142,8 @@ function mod:init()
   sprites.addSprite("weapons", "deploy_mini_repair_copter")
   sprites.addSprite("weapons", "mini_repair_drop")
   -- artillery
+  sprites.addSprite("effects", "shotup_mini_unstable_artillery")
+  sprites.addSprite("weapons", "deploy_mini_unstable_artillery")
   sprites.addSprite("effects", "shotup_mini_freeze_artillery")
   sprites.addSprite("effects", "shotup_mini_freeze_mine")
   sprites.addSprite("weapons", "deploy_mini_freeze_artillery")
@@ -168,7 +178,7 @@ function mod:init()
     "Mini_DeployKnightBot", "Mini_DeployLaserBot", "Mini_DeployJudoBot", "Mini_DeployLeapBot",
     "Mini_DeploySmokeCopter", "Mini_DeployNapalmCopter", "Mini_DeployRepairCopter",
     "Mini_DeployMirrorTank", "Mini_DeployShrapnelTank",
-    "Mini_DeployFreezeArtillery"
+    "Mini_DeployUnstableArtillery", "Mini_DeployFreezeArtillery"
   }) do
     local name = texts[id .. "_Name"]
     shop:addWeapon({
