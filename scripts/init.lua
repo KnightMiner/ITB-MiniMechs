@@ -194,7 +194,7 @@ function mod:init()
     "Mini_DeployKnightBot", "Mini_DeployLaserBot", "Mini_DeployJudoBot", "Mini_DeployLeapBot",
     "Mini_DeploySmokeCopter", "Mini_DeployNapalmCopter", "Mini_DeployRepairCopter",
     "Mini_DeployMirrorTank", "Mini_DeployShrapnelTank",
-    "Mini_DeployUnstableArtillery", "Mini_DeployFreezeArtillery"
+    "Mini_DeployUnstableArtillery", "Mini_DeployFreezeArtillery", "Mini_DeployRockArtillery"
   }) do
     local name = texts[id .. "_Name"]
     shop:addWeapon({
