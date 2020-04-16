@@ -29,7 +29,7 @@ Mini_UnstableArtShot = LineArtillery:new{
 	Upgrades    = 1,
 	UpgradeCost = {2},
 	-- Display
-	Explosion = "ExploArt1",
+	Explosion = "",
 	Icon = "weapons/ranged_artillery.png",
 	UpShot = "effects/shotup_tribomb_missile.png",
 	LaunchSound = "/support/civilian_artillery/fire",
