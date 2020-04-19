@@ -74,26 +74,26 @@ function mod:init()
     -- copters
     {
       Name    = "mini_smoke_copter",
-      Default  = { PosX = -15, PosY = 8 },
-      Animated = { PosX = -15, PosY = 8, NumFrames = 4 },
-      Death    = { PosX = -19, PosY = 9, NumFrames = 11, Time = 0.14, Loop = false },
-      Broken   = { PosX = -19, PosY = 9 },
+      Default  = { PosX = -15, PosY = 0 },
+      Animated = { PosX = -15, PosY = 0, NumFrames = 4 },
+      Death    = { PosX = -19, PosY = 1, NumFrames = 11, Time = 0.14, Loop = false },
+      Broken   = { PosX = -19, PosY = 1 },
       Icon     = {}
     },
     {
       Name    = "mini_napalm_copter",
-      Default  = { PosX = -15, PosY = 8 },
-      Animated = { PosX = -15, PosY = 8, NumFrames = 4 },
-      Death    = { PosX = -19, PosY = 9, NumFrames = 11, Time = 0.14, Loop = false },
-      Broken   = { PosX = -19, PosY = 9 },
+      Default  = { PosX = -15, PosY = 0 },
+      Animated = { PosX = -15, PosY = 0, NumFrames = 4 },
+      Death    = { PosX = -19, PosY = 1, NumFrames = 11, Time = 0.14, Loop = false },
+      Broken   = { PosX = -19, PosY = 1 },
       Icon     = {}
     },
     {
       Name    = "mini_repair_copter",
-      Default  = { PosX = -15, PosY = 8 },
-      Animated = { PosX = -15, PosY = 8, NumFrames = 4 },
-      Death    = { PosX = -19, PosY = 9, NumFrames = 11, Time = 0.14, Loop = false },
-      Broken   = { PosX = -19, PosY = 9 },
+      Default  = { PosX = -15, PosY = 0 },
+      Animated = { PosX = -15, PosY = 0, NumFrames = 4 },
+      Death    = { PosX = -19, PosY = 1, NumFrames = 11, Time = 0.14, Loop = false },
+      Broken   = { PosX = -19, PosY = 1 },
       Icon     = {}
     },
     -- artillery
