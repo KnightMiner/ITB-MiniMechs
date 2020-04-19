@@ -1,7 +1,7 @@
 local mod = {
   id = "mini_mechs",
   name = "Mini Mechs",
-  version = "0.0.1",
+  version = "0.1.0",
   requirements = {}
 }
 
