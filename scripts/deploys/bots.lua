@@ -13,12 +13,11 @@ Mini_KnightBot = Pawn:new {
 	SkillList      = { "Mini_KnightCharge" },
 	-- display
 	Image          = "mini_knightbot",
-	ImageOffset    = 0,
 	SoundLocation  = "/enemy/snowlaser_1/",
 	Corpse         = false
 }
 Mini_KnightBotA  = Mini_KnightBot:new { MoveSpeed = 4 }
-Mini_KnightBotB  = Mini_KnightBot:new { ImageOffset = 1, SkillList = { "Mini_KnightCharge_A" } }
+Mini_KnightBotB  = Mini_KnightBot:new { SkillList = { "Mini_KnightCharge_A" } }
 Mini_KnightBotAB = Mini_KnightBotB:new { MoveSpeed = 4 }
 
 --- Unit weapon
@@ -58,7 +57,7 @@ Mini_DeployKnightBot = Deployable:new{
 	UpgradeCost = {1,3},
 	-- visuals
   Icon        = "weapons/deploy_mini_knightbot.png",
-  Projectile  = "effects/shotup_mini_knightbot1.png",
+  Projectile  = "effects/shotup_mini_knightbot.png",
 	LaunchSound = "/weapons/deploy_tank",
 	ImpactSound = "/impact/generic/mech",
 	TipImage = {
@@ -74,7 +73,6 @@ Mini_DeployKnightBot_A = Mini_DeployKnightBot:new{
 }
 Mini_DeployKnightBot_B = Mini_DeployKnightBot:new{
 	Deployed = "Mini_KnightBotB",
-  Projectile = "effects/shotup_mini_knightbot2.png",
 	TipImage = {
 		Unit          = Point(1,3),
 		Target        = Point(1,1),
@@ -101,12 +99,11 @@ Mini_LaserBot = Pawn:new {
 	SkillList      = { "Mini_Laserbeam" },
 	-- display
 	Image          = "mini_laserbot",
-	ImageOffset    = 0,
 	SoundLocation  = "/enemy/snowlaser_1/",
 	Corpse         = false
 }
 Mini_LaserBotA  = Mini_LaserBot:new { MoveSpeed = 4 }
-Mini_LaserBotB  = Mini_LaserBot:new { ImageOffset = 1, SkillList = { "Mini_Laserbeam_A" } }
+Mini_LaserBotB  = Mini_LaserBot:new { SkillList = { "Mini_Laserbeam_A" } }
 Mini_LaserBotAB = Mini_LaserBotB:new { MoveSpeed = 4 }
 
 --- Unit weapon
@@ -147,7 +144,7 @@ Mini_DeployLaserBot = Deployable:new{
 	UpgradeCost = {1,3},
 	-- visuals
   Icon        = "weapons/deploy_mini_laserbot.png",
-  Projectile  = "effects/shotup_mini_laserbot1.png",
+  Projectile  = "effects/shotup_mini_laserbot.png",
 	LaunchSound = "/weapons/deploy_tank",
 	ImpactSound = "/impact/generic/mech",
 	TipImage = {
@@ -165,7 +162,6 @@ Mini_DeployLaserBot_A = Mini_DeployLaserBot:new{
 }
 Mini_DeployLaserBot_B = Mini_DeployLaserBot:new{
 	Deployed = "Mini_LaserBotB",
-	Projectile = "effects/shotup_mini_laserbot2.png"
 }
 Mini_DeployLaserBot_AB = Mini_DeployLaserBot_B:new{
 	Deployed = "Mini_LaserBotAB"
@@ -186,12 +182,11 @@ Mini_JudoBot = Pawn:new {
 	SkillList      = { "Mini_JudoThrow" },
 	-- display
 	Image          = "mini_judobot",
-	ImageOffset    = 0,
 	SoundLocation  = "/enemy/snowlaser_1/",
 	Corpse         = false
 }
 Mini_JudoBotA  = Mini_JudoBot:new { MoveSpeed = 4 }
-Mini_JudoBotB  = Mini_JudoBot:new { ImageOffset = 1, SkillList = { "Mini_JudoThrow_A" } }
+Mini_JudoBotB  = Mini_JudoBot:new { SkillList = { "Mini_JudoThrow_A" } }
 Mini_JudoBotAB = Mini_JudoBotB:new { MoveSpeed = 4 }
 
 --- Unit weapon
@@ -300,7 +295,7 @@ Mini_DeployJudoBot = Deployable:new{
 	UpgradeCost = {1,2},
 	-- visuals
   Icon        = "weapons/deploy_mini_judobot.png",
-  Projectile  = "effects/shotup_mini_judobot1.png",
+  Projectile  = "effects/shotup_mini_judobot.png",
 	LaunchSound = "/weapons/deploy_tank",
 	ImpactSound = "/impact/generic/mech",
 	TipImage = {
@@ -316,7 +311,6 @@ Mini_DeployJudoBot_A = Mini_DeployJudoBot:new{
 }
 Mini_DeployJudoBot_B = Mini_DeployJudoBot:new{
 	Deployed    = "Mini_JudoBotB",
-  Projectile  = "effects/shotup_mini_judobot2.png",
 	TipImage = {
 		Unit          = Point(2,3),
 		Target        = Point(2,1),
@@ -343,12 +337,11 @@ Mini_LeapBot = Pawn:new {
 	SkillList      = { "Mini_Boosters" },
 	-- display
 	Image          = "mini_leapbot",
-	ImageOffset    = 0,
 	SoundLocation  = "/enemy/snowart_1/",
 	Corpse         = false
 }
 Mini_LeapBotA  = Mini_LeapBot:new { MoveSpeed = 4 }
-Mini_LeapBotB  = Mini_LeapBot:new { ImageOffset = 1, SkillList = { "Mini_Boosters_A" } }
+Mini_LeapBotB  = Mini_LeapBot:new { SkillList = { "Mini_Boosters_A" } }
 Mini_LeapBotAB = Mini_LeapBotB:new { MoveSpeed = 4 }
 
 --- Unit weapon
@@ -392,7 +385,7 @@ Mini_DeployLeapBot = Deployable:new{
 	UpgradeCost = {1,2},
 	-- visuals
   Icon        = "weapons/deploy_mini_leapbot.png",
-  Projectile  = "effects/shotup_mini_leapbot1.png",
+  Projectile  = "effects/shotup_mini_leapbot.png",
 	LaunchSound = "/weapons/deploy_tank",
 	ImpactSound = "/impact/generic/mech",
 	TipImage = {
@@ -409,7 +402,6 @@ Mini_DeployLeapBot_A = Mini_DeployLeapBot:new{
 }
 Mini_DeployLeapBot_B = Mini_DeployLeapBot:new{
 	Deployed = "Mini_LeapBotB",
-	Projectile = "effects/shotup_mini_leapbot2.png",
 	TipImage = {
 		Unit          = Point(1,3),
 		Target        = Point(1,1),

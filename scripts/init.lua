@@ -41,35 +41,35 @@ function mod:init()
     -- bots
     {
       Name = "mini_knightbot",
-      Default  = { Height = 2, PosX = -19, PosY = -4,  },
-      Animated = { Height = 2, PosX = -19, PosY = -4, NumFrames = 4 },
-      Death    = { Height = 2, PosX = -20, PosY = -7, NumFrames = 11, Time = 0.14, Loop = false },
-      Broken   = { Height = 2, PosX = -19, PosY = -4 },
-      Icon     = { Height = 2 }
+      Default  = { PosX = -19, PosY = -4,  },
+      Animated = { PosX = -19, PosY = -4, NumFrames = 4 },
+      Death    = { PosX = -20, PosY = -7, NumFrames = 11, Time = 0.14, Loop = false },
+      Broken   = { PosX = -19, PosY = -4 },
+      Icon     = {}
     },
     {
       Name = "mini_laserbot",
-      Default  = { Height = 2, PosX = -15, PosY = -5 },
-      Animated = { Height = 2, PosX = -15, PosY = -5, NumFrames = 4 },
-      Death    = { Height = 2, PosX = -19, PosY = -9, NumFrames = 11, Time = 0.14, Loop = false },
-      Broken   = { Height = 2, PosX = -15, PosY = -5 },
-      Icon     = { Height = 2 }
+      Default  = { PosX = -15, PosY = -5 },
+      Animated = { PosX = -15, PosY = -5, NumFrames = 4 },
+      Death    = { PosX = -19, PosY = -9, NumFrames = 11, Time = 0.14, Loop = false },
+      Broken   = { PosX = -15, PosY = -5 },
+      Icon     = {}
     },
     {
       Name = "mini_judobot",
-      Default  = { Height = 2, PosX = -15, PosY = -1 },
-      Animated = { Height = 2, PosX = -15, PosY = -1, NumFrames = 4 },
-      Death    = { Height = 2, PosX = -19, PosY = -5, NumFrames = 11, Time = 0.14, Loop = false },
-      Broken   = { Height = 2, PosX = -15, PosY = -1 },
-      Icon     = { Height = 2 }
+      Default  = { PosX = -15, PosY = -1 },
+      Animated = { PosX = -15, PosY = -1, NumFrames = 4 },
+      Death    = { PosX = -19, PosY = -5, NumFrames = 11, Time = 0.14, Loop = false },
+      Broken   = { PosX = -15, PosY = -1 },
+      Icon     = {}
     },
     {
       Name = "mini_leapbot",
-      Default  = { Height = 2, PosX = -14, PosY =  -5 },
-      Animated = { Height = 2, PosX = -15, PosY =  -5, NumFrames = 4 },
-      Death    = { Height = 2, PosX = -20, PosY = -10, NumFrames = 11, Time = 0.14, Loop = false },
-      Broken   = { Height = 2, PosX = -14, PosY =  -5 },
-      Icon     = { Height = 2 }
+      Default  = { PosX = -14, PosY =  -5 },
+      Animated = { PosX = -15, PosY =  -5, NumFrames = 4 },
+      Death    = { PosX = -20, PosY = -10, NumFrames = 11, Time = 0.14, Loop = false },
+      Broken   = { PosX = -14, PosY =  -5 },
+      Icon     = {}
     },
     -- copters
     {
@@ -133,17 +133,13 @@ function mod:init()
   sprites.addSprite("effects", "shotup_mini_shrapneltank")
   sprites.addSprite("weapons", "deploy_mini_shrapneltank")
   -- bots
-  sprites.addSprite("effects", "shotup_mini_knightbot1")
-  sprites.addSprite("effects", "shotup_mini_knightbot2")
+  sprites.addSprite("effects", "shotup_mini_knightbot")
   sprites.addSprite("weapons", "deploy_mini_knightbot")
-  sprites.addSprite("effects", "shotup_mini_laserbot1")
-  sprites.addSprite("effects", "shotup_mini_laserbot2")
+  sprites.addSprite("effects", "shotup_mini_laserbot")
   sprites.addSprite("weapons", "deploy_mini_laserbot")
-  sprites.addSprite("effects", "shotup_mini_judobot1")
-  sprites.addSprite("effects", "shotup_mini_judobot2")
+  sprites.addSprite("effects", "shotup_mini_judobot")
   sprites.addSprite("weapons", "deploy_mini_judobot")
-  sprites.addSprite("effects", "shotup_mini_leapbot1")
-  sprites.addSprite("effects", "shotup_mini_leapbot2")
+  sprites.addSprite("effects", "shotup_mini_leapbot")
   sprites.addSprite("weapons", "deploy_mini_leapbot")
   -- copters
   sprites.addSprite("effects", "shotup_mini_smoke_copter")
