@@ -5,7 +5,7 @@
 --- Unit
 Mini_UnstableArtillery = Pawn:new {
 	Name           = "Unstable Artillery",
-	Health         = 2,
+	Health         = 1,
 	MoveSpeed      = 2,
 	DefaultTeam    = TEAM_PLAYER,
 	ImpactMaterial = IMPACT_METAL,
@@ -112,7 +112,7 @@ Mini_DeployUnstableArtillery_AB = Mini_DeployUnstableArtillery:new{
 --- Unit
 Mini_FreezeArtillery = Pawn:new {
 	Name           = "Freeze Artillery",
-	Health         = 2,
+	Health         = 1,
 	MoveSpeed      = 2,
 	DefaultTeam    = TEAM_PLAYER,
 	ImpactMaterial = IMPACT_METAL,
@@ -239,7 +239,7 @@ Mini_DeployFreezeArtillery_AB = Mini_DeployFreezeArtillery_B:new{
 --- Unit
 Mini_RockArtillery = Pawn:new {
 	Name           = "Rock Artillery",
-	Health         = 2,
+	Health         = 1,
 	MoveSpeed      = 2,
 	DefaultTeam    = TEAM_PLAYER,
 	ImpactMaterial = IMPACT_METAL,
