@@ -29,10 +29,10 @@ return {
   ----------
 
   -- Knight-Bot
-  Mini_Knightcharge_Name = "Knight Sword",
-  Mini_Knightcharge_Description = "Stab an adjacent tile, damaging and pushing it.",
-  Mini_Knightcharge_Upgrade1 = "Dash",
-  Mini_Knightcharge_A_UpgradeDescription = "Charge any distance before stabbing the target, increases damage by 1.",
+  Mini_KnightCharge_Name = "Knight Sword",
+  Mini_KnightCharge_Description = "Stab an adjacent tile, damaging and pushing it.",
+  Mini_KnightCharge_Upgrade1 = "Dash",
+  Mini_KnightCharge_A_UpgradeDescription = "Charge any distance before stabbing the target, increases damage by 1.",
 
   Mini_DeployKnightBot_Name = "Knight-Bot",
   Mini_DeployKnightBot_Description = "Deploy a knight-bot to help in combat.",

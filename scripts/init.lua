@@ -14,6 +14,26 @@ function mod:loadScript(path)
   return require(self.scriptPath..path)
 end
 
+--[[--
+  Fixes skill names in pawns
+
+  @param name  Weapon name to fix
+]]
+function fixWeaponTexts(name)
+  -- get name and description
+  local base = _G[name]
+  base.Name = Weapon_Texts[name .. "_Name"]
+  base.Description = Weapon_Texts[name .. "_Description"]
+  -- upgrade A description
+  for _, key in ipairs({"_A", "_B"}) do
+    local fullName = name .. key
+    local upgrade = _G[fullName]
+    if upgrade ~= nil then
+      upgrade.UpgradeDescription =  Weapon_Texts[fullName .. "_UpgradeDescription"]
+    end
+  end
+end
+
 function mod:metadata()
 end
 
@@ -198,6 +218,16 @@ function mod:init()
       name = "Add Deploy " .. name .. " to runs",
       desc = "Add Deploy " .. name .. " to the store, timepods, and perfect island rewards."
     })
+    fixWeaponTexts(id)
+  end
+  -- fix deploy weapon texts
+  for _, id in ipairs({
+    "Mini_KnightCharge", "Mini_Laserbeam", "Mini_JudoThrow", "Mini_Boosters",
+    "Mini_SmokeBombs", "Mini_NapalmBombs", "Mini_RepairDrop",
+    "Mini_Mirrorshot",
+    "Mini_UnstableArtShot", "Mini_DeployFreezeMine", "Mini_RockThrow"
+  }) do
+    fixWeaponTexts(id)
   end
 end
 
