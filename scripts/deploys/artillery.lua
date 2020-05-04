@@ -179,7 +179,7 @@ function Mini_DeployFreezeMine:GetSkillEffect(p1, p2)
 		local freeze = SpaceDamage(p1 + DIR_VECTORS[GetDirection(p1 - p2)], 0)
 		freeze.iFrozen = EFFECT_CREATE
 		freeze.sAnimation = "ExplIce1"
-		freeze.sSound = "/impact/generic/ice"
+		freeze.sSound = "/props/freezing_mine"
 		ret:AddDamage(freeze)
 	end
 	-- fire freeze mine
