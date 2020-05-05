@@ -1,7 +1,7 @@
 local mod = {
   id = "mini_mechs",
   name = "Mini Mechs",
-  version = "0.1.0",
+  version = "1.0.0",
   requirements = {},
   icon = "img/units/mission/mini_judobot_ns.png"
 }
