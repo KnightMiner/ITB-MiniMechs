@@ -2,7 +2,8 @@ local mod = {
   id = "mini_mechs",
   name = "Mini Mechs",
   version = "0.1.0",
-  requirements = {}
+  requirements = {},
+  icon = "img/units/mission/mini_judobot_ns.png"
 }
 
 --- List of deployables found in vanilla
