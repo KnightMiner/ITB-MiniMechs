@@ -53,7 +53,7 @@ Mini_KnightCharge_A = Mini_KnightCharge:new{
 -- Equipable weapon
 Mini_DeployKnightBot = Deployable:new{
 	Deployed = "Mini_KnightBot",
-	Rarity      = 3,
+	Rarity      = 2,
 	PowerCost   = 2,
 	Upgrades    = 2,
 	UpgradeCost = {1,3},
@@ -295,7 +295,7 @@ end
 -- Equipable weapon
 Mini_DeployJudoBot = Deployable:new{
 	Deployed = "Mini_JudoBot",
-	Rarity      = 3,
+	Rarity      = 2,
 	PowerCost   = 2,
 	Upgrades    = 2,
 	UpgradeCost = {1,2},

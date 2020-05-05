@@ -80,7 +80,7 @@ end
 -- Equipable weapon
 Mini_DeployUnstableArtillery = Deployable:new{
 	Deployed = "Mini_UnstableArtillery",
-	Rarity      = 3,
+	Rarity      = 2,
 	PowerCost   = 2,
 	Upgrades    = 2,
 	UpgradeCost = {1,2},
@@ -203,7 +203,7 @@ end
 -- Equipable weapon
 Mini_DeployFreezeArtillery = Deployable:new{
 	Deployed = "Mini_FreezeArtillery",
-	Rarity      = 3,
+	Rarity      = 4,
 	PowerCost   = 2,
 	Upgrades    = 2,
 	UpgradeCost = {1,2},
