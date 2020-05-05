@@ -22,6 +22,7 @@ Mini_MirrorTankAB = Mini_MirrorTank:new { Health = 3, SkillList = { "Mini_Mirror
 --- Unit weapon
 Mini_Mirrorshot = TankDefault:new {
 	Class = "Unique",
+	Rarity      = 0,
 	Damage      = 1,
 	BackShot    = 1,
 	Push        = 0,
@@ -75,6 +76,7 @@ end
 -- Equipable weapon
 Mini_DeployMirrorTank = Deployable:new{
 	Deployed = "Mini_MirrorTank",
+	Rarity      = 3,
 	PowerCost   = 2,
 	Upgrades    = 2,
 	UpgradeCost = {1,2},
@@ -126,6 +128,7 @@ Mini_ShrapnelTankAB = Mini_ShrapnelTank:new { Health = 3, MoveSpeed = 4 }
 -- Equipable weapon
 Mini_DeployShrapnelTank = Deployable:new{
 	Deployed = "Mini_ShrapnelTank",
+	Rarity      = 3,
 	PowerCost   = 2,
 	Upgrades    = 2,
 	UpgradeCost = {1,1},

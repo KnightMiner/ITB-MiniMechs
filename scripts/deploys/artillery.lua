@@ -24,6 +24,7 @@ Mini_UnstableArtShot = LineArtillery:new{
 	Class = "Unique",
 	Range = RANGE_ARTILLERY,
 	Damage = 1,
+	Rarity = 0,
 	-- upgrades
 	DoubleShot = false,
 	Upgrades    = 1,
@@ -79,6 +80,7 @@ end
 -- Equipable weapon
 Mini_DeployUnstableArtillery = Deployable:new{
 	Deployed = "Mini_UnstableArtillery",
+	Rarity      = 3,
 	PowerCost   = 2,
 	Upgrades    = 2,
 	UpgradeCost = {1,2},
@@ -131,6 +133,7 @@ Mini_DeployFreezeMine = LineArtillery:new{
 	Class = "Unique",
 	Item = "Freeze_Mine",
 	PowerCost = 0,
+	Rarity = 0,
 	-- upgrades
 	BackFreeze = false,
 	Upgrades    = 1,
@@ -200,6 +203,7 @@ end
 -- Equipable weapon
 Mini_DeployFreezeArtillery = Deployable:new{
 	Deployed = "Mini_FreezeArtillery",
+	Rarity      = 3,
 	PowerCost   = 2,
 	Upgrades    = 2,
 	UpgradeCost = {1,2},
@@ -267,6 +271,7 @@ Mini_RockThrow = ArtilleryDefault:new{
 	PowerCost = 0,
 	ArtilleryStart = 2,
 	ArtillerySize = 8,
+	Rarity = 0,
 	-- upgrades
 	Fire = false,
 	Rock = "RockThrown",
@@ -327,6 +332,7 @@ end
 -- Equipable weapon
 Mini_DeployRockArtillery = Deployable:new{
 	Deployed = "Mini_RockArtillery",
+	Rarity      = 3,
 	PowerCost   = 2,
 	Upgrades    = 2,
 	UpgradeCost = {1,2},

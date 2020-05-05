@@ -23,6 +23,7 @@ Mini_KnightBotAB = Mini_KnightBotB:new { MoveSpeed = 4 }
 --- Unit weapon
 Mini_KnightCharge = Prime_Punchmech:new {
 	Class       = "Unique",
+	Rarity      = 0,
 	Damage      = 1,
 	Push        = 0,
 	PowerCost   = 0,
@@ -52,6 +53,7 @@ Mini_KnightCharge_A = Mini_KnightCharge:new{
 -- Equipable weapon
 Mini_DeployKnightBot = Deployable:new{
 	Deployed = "Mini_KnightBot",
+	Rarity      = 3,
 	PowerCost   = 2,
 	Upgrades    = 2,
 	UpgradeCost = {1,3},
@@ -109,6 +111,7 @@ Mini_LaserBotAB = Mini_LaserBotB:new { MoveSpeed = 4 }
 --- Unit weapon
 Mini_Laserbeam = LaserDefault:new {
 	Class       = "Unique",
+	Rarity      = 0,
 	Damage      = 2,
 	PowerCost   = 0,
 	Upgrades    = 1,
@@ -139,6 +142,7 @@ Mini_Laserbeam_A = Mini_Laserbeam:new{
 -- Equipable weapon
 Mini_DeployLaserBot = Deployable:new{
 	Deployed = "Mini_LaserBot",
+	Rarity      = 3,
 	PowerCost   = 2,
 	Upgrades    = 2,
 	UpgradeCost = {1,3},
@@ -192,6 +196,7 @@ Mini_JudoBotAB = Mini_JudoBotB:new { MoveSpeed = 4 }
 --- Unit weapon
 Mini_JudoThrow = Skill:new {
 	Class       = "Unique",
+	Rarity      = 0,
 	Damage      = 0,
 	Range       = 1,
 	PowerCost   = 0,
@@ -290,6 +295,7 @@ end
 -- Equipable weapon
 Mini_DeployJudoBot = Deployable:new{
 	Deployed = "Mini_JudoBot",
+	Rarity      = 3,
 	PowerCost   = 2,
 	Upgrades    = 2,
 	UpgradeCost = {1,2},
@@ -347,6 +353,7 @@ Mini_LeapBotAB = Mini_LeapBotB:new { MoveSpeed = 4 }
 --- Unit weapon
 Mini_Boosters = Leap_Attack:new {
 	Class       = "Unique",
+	Rarity      = 0,
 	Damage      = 0,
 	SelfDamage  = 0,
 	Push        = 1,
@@ -380,6 +387,7 @@ Mini_Boosters_A = Mini_Boosters:new{
 -- Equipable weapon
 Mini_DeployLeapBot = Deployable:new{
 	Deployed = "Mini_LeapBot",
+	Rarity      = 3,
 	PowerCost   = 2,
 	Upgrades    = 2,
 	UpgradeCost = {1,2},

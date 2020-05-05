@@ -27,6 +27,7 @@ end
 --- Shared logic for the two leap attacks
 Mini_Leap_Attack = Support_Smoke:new {
 	Class = "Unique",
+	Rarity = 0,
 	Smoke = 0,
 	PowerCost = 0,
 	TargetEmpty = true
@@ -123,6 +124,7 @@ Mini_SmokeBombs_A = Mini_SmokeBombs:new {
 -- Equipable weapon
 Mini_DeploySmokeCopter = FlyingDeployable:new{
 	Deployed = "Mini_SmokeCopter",
+	Rarity      = 3,
 	PowerCost   = 2,
 	Upgrades    = 2,
 	UpgradeCost = {1,2},
@@ -224,6 +226,7 @@ Mini_NapalmBombs_A = Mini_NapalmBombs:new {
 -- Equipable weapon
 Mini_DeployNapalmCopter = FlyingDeployable:new{
 	Deployed = "Mini_NapalmCopter",
+	Rarity      = 3,
 	PowerCost   = 1,
 	Upgrades    = 2,
 	UpgradeCost = {1,2},
@@ -325,6 +328,7 @@ Mini_RepairDrop_A = Mini_RepairDrop:new {
 -- Equipable weapon
 Mini_DeployRepairCopter = FlyingDeployable:new{
 	Deployed = "Mini_RepairCopter",
+	Rarity       = 3,
 	PowerCost    = 1,
 	Upgrades     = 2,
 	UpgradeCost  = {2,2},

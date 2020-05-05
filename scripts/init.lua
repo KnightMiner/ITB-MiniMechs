@@ -5,6 +5,11 @@ local mod = {
   requirements = {}
 }
 
+--- List of deployables found in vanilla
+local VANILLA_DEPLOYS = {
+  "DeploySkill_Tank", "DeploySkill_ShieldTank", "DeploySkill_AcidTank", "DeploySkill_IceTank", "DeploySkill_PullTank",
+}
+
 --[[--
   Helper function to load mod scripts
 
@@ -35,6 +40,12 @@ function fixWeaponTexts(name)
 end
 
 function mod:metadata()
+  modApi:addGenerationOption(
+    "tweakVanillaRarity",
+    "Tweak Vanilla Rarity",
+    "If checked, makes vanilla deployables more rare to make up for 4 times as many deploys",
+    { enabled = true }
+  )
 end
 
 function mod:init()
@@ -233,6 +244,15 @@ end
 
 function mod:load(options,version)
   self:loadScript("libs/shop"):load(options)
+
+  local tweakVanillaRarity = not options.tweakVanillaRarity or options.tweakVanillaRarity.enabled
+  local newRarity = tweakVanillaRarity and 3 or 1
+  for _, id in ipairs(VANILLA_DEPLOYS) do
+    local weapon = _G[id]
+    if weapon ~= nil then
+      weapon.Rarity = newRarity
+    end
+  end
 end
 
 return mod
