@@ -190,6 +190,7 @@ function Mini_DeployFreezeMine:GetSkillEffect(p1, p2)
 	-- if ground, place mine, water or holes will "detonate the mine" and freeze it
 	if not Board:IsBlocked(p2, PATH_GROUND) then
 		damage.sItem = self.Item
+		damage.sImageMark = "combat/icons/icon_deploy_mine.png"
 	elseif Board:IsTerrain(p2, TERRAIN_WATER) then
 		damage.iFrozen = EFFECT_CREATE
 		damage.sAnimation = "ExplIce1"
