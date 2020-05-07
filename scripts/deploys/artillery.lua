@@ -137,7 +137,7 @@ Mini_DeployFreezeMine = LineArtillery:new{
 	-- upgrades
 	BackFreeze = false,
 	Upgrades    = 1,
-	UpgradeCost = {2},
+	UpgradeCost = {3},
 	-- Display
 	BounceAmount = 2,
 	Explosion = "",
@@ -207,7 +207,7 @@ Mini_DeployFreezeArtillery = Deployable:new{
 	Rarity      = 4,
 	PowerCost   = 2,
 	Upgrades    = 2,
-	UpgradeCost = {1,2},
+	UpgradeCost = {1,3},
 	-- visuals
   Icon        = "weapons/deploy_mini_freeze_artillery.png",
   Projectile  = "effects/shotup_mini_freeze_artillery.png",
