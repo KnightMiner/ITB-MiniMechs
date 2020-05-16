@@ -3,6 +3,7 @@ local mod = {
   name = "Mini Mechs",
   version = "1.0.0",
   requirements = {},
+  modApiVersion = "2.5.3",
   icon = "img/units/mission/mini_judobot_ns.png"
 }
 
@@ -212,19 +213,13 @@ function mod:init()
   modApi:addWeapon_Texts(texts)
 
   -- add weapons to the shop
-  local shop = self:loadScript("libs/shop")
   for _, id in ipairs({
     "Mini_DeployKnightBot", "Mini_DeployLaserBot", "Mini_DeployJudoBot", "Mini_DeployLeapBot",
     "Mini_DeploySmokeCopter", "Mini_DeployNapalmCopter", "Mini_DeployRepairCopter",
     "Mini_DeployMirrorTank", "Mini_DeployShrapnelTank",
     "Mini_DeployUnstableArtillery", "Mini_DeployFreezeArtillery", "Mini_DeployRockArtillery"
   }) do
-    local name = texts[id .. "_Name"]
-    shop:addWeapon({
-      id = id,
-      name = "Add Deploy " .. name .. " to runs",
-      desc = "Add Deploy " .. name .. " to the store, timepods, and perfect island rewards."
-    })
+    modApi:addWeaponDrop(id, true)
     fixWeaponTexts(id)
   end
   -- fix deploy weapon texts
@@ -239,7 +234,6 @@ function mod:init()
 end
 
 function mod:load(options,version)
-  self:loadScript("libs/shop"):load(options)
 end
 
 return mod
