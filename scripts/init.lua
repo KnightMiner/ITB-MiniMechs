@@ -154,6 +154,17 @@ function mod:init()
       Death   = { PosX = -34, PosY = -9, NumFrames = 13, Time = 0.09, Loop = false }
     }
   )
+  sprites.addMechs(
+    {
+      Name = "mini_tower",
+      Default  = { PosX = -17, PosY = -10 },
+      Animated = { PosX = -17, PosY = -12, NumFrames = 4 },
+      Broken   = { PosX = -17, PosY = -10 },
+      Death    = { PosX = -21, PosY = -13, NumFrames = 11, Time = 0.14, Loop = false },
+      Icon     = {},
+      NoHanger = true
+    }
+  )
   -- tanks
   sprites.addSprite("effects", "shotup_mini_mirrortank")
   sprites.addSprite("weapons", "deploy_mini_mirrortank")
