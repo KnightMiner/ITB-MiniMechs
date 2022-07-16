@@ -202,6 +202,11 @@ function mod:init()
   -- towers
   sprites.addSprite("effects", "shotup_mini_wind_tower")
   sprites.addSprite("weapons", "deploy_mini_wind_tower")
+  sprites.addSprite("effects", "shotup_mini_terraformer")
+  sprites.addSprite("weapons", "deploy_mini_terraformer")
+  sprites.addSprite("weapons", "mini_terraform")
+  sprites.addIcon("combat/icons", "mini_fill_icon", Point(-10,12))
+  sprites.addIcon("combat/icons", "mini_lava_icon", Point(-10,12))
   -- animations
   sprites.addAnimation("effects", "mini_raining_smoke", {
     NumFrames = 6,
@@ -233,7 +238,7 @@ function mod:init()
     "Mini_DeploySmokeCopter", "Mini_DeployNapalmCopter", "Mini_DeployRepairCopter",
     "Mini_DeployMirrorTank", "Mini_DeployShrapnelTank",
     "Mini_DeployUnstableArtillery", "Mini_DeployFreezeArtillery", "Mini_DeployRockArtillery",
-    "Mini_DeployWindTower"
+    "Mini_DeployWindTower", "Mini_DeployTerraformer"
   }) do
     modApi:addWeaponDrop(id, true)
     fixWeaponTexts(id)
