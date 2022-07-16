@@ -208,8 +208,12 @@ function mod:init()
   sprites.addSprite("effects", "shotup_mini_storm_tower")
   sprites.addSprite("weapons", "deploy_mini_storm_tower")
   sprites.addSprite("weapons", "mini_lightning_strike")
+  sprites.addSprite("effects", "shotup_mini_overdriver")
+  sprites.addSprite("weapons", "deploy_mini_overdriver")
+  sprites.addSprite("weapons", "mini_overdrive")
   sprites.addIcon("combat/icons", "mini_fill_icon", Point(-10,12))
   sprites.addIcon("combat/icons", "mini_lava_icon", Point(-10,12))
+  sprites.addIcon("combat/icons", "mini_overdrive_icon", Point(-10,12))
   -- animations
   sprites.addAnimation("effects", "mini_raining_smoke", {
     NumFrames = 6,
@@ -241,7 +245,7 @@ function mod:init()
     "Mini_DeploySmokeCopter", "Mini_DeployNapalmCopter", "Mini_DeployRepairCopter",
     "Mini_DeployMirrorTank", "Mini_DeployShrapnelTank",
     "Mini_DeployUnstableArtillery", "Mini_DeployFreezeArtillery", "Mini_DeployRockArtillery",
-    "Mini_DeployWindTower", "Mini_DeployTerraformer", "Mini_DeployStormTower"
+    "Mini_DeployWindTower", "Mini_DeployTerraformer", "Mini_DeployStormTower", "Mini_DeployOverdriver"
   }) do
     modApi:addWeaponDrop(id, true)
     fixWeaponTexts(id)
@@ -252,7 +256,7 @@ function mod:init()
     "Mini_SmokeBombs", "Mini_NapalmBombs", "Mini_RepairDrop",
     "Mini_Mirrorshot",
     "Mini_UnstableArtShot", "Mini_DeployFreezeMine", "Mini_RockThrow",
-    "Mini_WindTorrent", "Mini_Terraform", "Mini_LightningStrike"
+    "Mini_WindTorrent", "Mini_Terraform", "Mini_LightningStrike", "Mini_Overdrive"
   }) do
     fixWeaponTexts(id)
   end

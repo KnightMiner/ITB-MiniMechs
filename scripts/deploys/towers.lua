@@ -393,4 +393,107 @@ Mini_DeployStormTower = Deployable:new{
 Mini_DeployStormTower_A  = Mini_DeployStormTower:new{ Deployed = "Mini_StormTowerA" }
 Mini_DeployStormTower_B  = Mini_DeployStormTower:new{ Deployed = "Mini_StormTowerB" }
 Mini_DeployStormTower_AB = Mini_DeployStormTower:new{ Deployed = "Mini_StormTowerAB" }
+
+
+-----------------------
+-- Deploy Overdriver --
+-----------------------
+
+--- Unit
+Mini_Overdriver = Pawn:new {
+	Name           = "Overdriver",
+	Health         = 2,
+	MoveSpeed      = 0,
+	DefaultTeam    = TEAM_PLAYER,
+	ImpactMaterial = IMPACT_METAL,
+	SkillList      = { "Mini_Overdrive" },
+	Pushable       = false,
+	Corpse         = false,
+	-- display
+	Image          = "mini_tower",
+  ImageOffset     = modApi:getPaletteImageOffset("Secret Squad"),
+	SoundLocation  = "/support/earthmover/"
 }
+Mini_OverdriverA  = Mini_Overdriver:new { Health = 4 }
+Mini_OverdriverB  = Mini_Overdriver:new { SkillList = { "Mini_Overdrive_A" } }
+Mini_OverdriverAB = Mini_OverdriverA:new { SkillList = { "Mini_Overdrive_A" } }
+
+-- Weapon
+Mini_Overdrive = SquareTargetSkill:new{
+	Class       = "Unique",
+	Rarity      = 0,
+	Damage      = 2,
+	Range       = 2,
+	PowerCost   = 0,
+	Upgrades    = 1,
+	UpgradeCost = {2},
+	-- display
+	Icon = "weapons/mini_overdrive.png",
+  TipImage = {
+		Unit          = Point(2,3),
+		Friendly      = Point(2,1),
+    Target        = Point(2,1)
+	}
+}
+Mini_Overdrive_A = Mini_Overdrive:new{ Range = 3 }
+
+function Mini_Overdrive:IsValidTarget(point)
+  local target = Board:GetPawn(point)
+  if target and not target:IsDead() and not target:IsActive()
+      and not isEnemy(Pawn:GetTeam(), target:GetTeam()) then
+    return true
+  end
+  return false
+end
+
+function Mini_Overdrive:GetSkillEffect(p1, p2)
+  local ret = SkillEffect()
+
+  -- power on unit again
+  ret:AddSound("/enemy/shared/robot_power_on")
+	ret:AddScript(string.format([[
+		local p = %s
+    local unit = Board:GetPawn(p)
+		if unit then
+			unit:SetActive(true)
+			Board:Ping(p, GL_Color(128, 0, 255))
+		end]],
+		p2:GetString()
+	))
+
+  local icon = SpaceDamage(p2, 0)
+  icon.sImageMark = "combat/icons/mini_overdrive_icon.png"
+  ret:AddDamage(icon)
+
+  -- self damgae when activating mechs
+  local target = Board:GetPawn(p2)
+  if target and target:IsMech() then
+    ret:AddDamage(SpaceDamage(p1, 1))
+  end
+
+  return ret
+end
+
+-- Deploy
+Mini_DeployOverdriver = Deployable:new{
+	Deployed = "Mini_Overdriver",
+	Rarity      = 4,
+	PowerCost   = 2,
+	Upgrades    = 2,
+	UpgradeCost = {1,2},
+	-- visuals
+  Icon        = "weapons/deploy_mini_overdriver.png",
+  Projectile  = "effects/shotup_mini_overdriver.png",
+	LaunchSound = "/weapons/deploy_tank",
+	ImpactSound = "/impact/generic/mech",
+  TipImage = {
+		Unit          = Point(2,3),
+		Friendly      = Point(1,2),
+		Target        = Point(2,1),
+    Second_Origin = Point(2,1),
+    Second_Target = Point(1,2)
+	}
+}
+Mini_DeployOverdriver_A = Mini_DeployOverdriver:new{ Deployed = "Mini_OverdriverA" }
+Mini_DeployOverdriver_B = Mini_DeployOverdriver:new{ Deployed = "Mini_OverdriverB" }
+Mini_DeployOverdriver_AB = Mini_DeployOverdriver:new{ Deployed = "Mini_OverdriverAB" }
