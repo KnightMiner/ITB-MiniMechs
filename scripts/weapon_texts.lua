@@ -199,4 +199,32 @@ return {
   Mini_DeployTerraformer_A_UpgradeDescription = "Can use the terraformer 3 times per turn.",
   Mini_DeployTerraformer_Upgrade2 = "+1 Range",
   Mini_DeployTerraformer_B_UpgradeDescription = "Increases the range to 7x7.",
+
+  -- Storm Tower
+  Mini_LightningStrike_Name = "Lightning Strike",
+  Mini_LightningStrike_Description = "Summons a bolt of lightning at the target.",
+  Mini_LightningStrike_Upgrade1 = "+2 Damage",
+  Mini_LightningStrike_A_UpgradeDescription = "Increases the damage by 2.",
+  Mini_LightningStrike_Upgrade2 = "+1 Range",
+  Mini_LightningStrike_B_UpgradeDescription = "Increases the range to 7x7.",
+
+  Mini_DeployStormTower_Name = "Storm Tower",
+  Mini_DeployStormTower_Description = "Deploy a storm tower to help in combat.",
+  Mini_DeployStormTower_Upgrade1 = "+2 Damage",
+  Mini_DeployStormTower_A_UpgradeDescription = "Increases the lightning damage to 4.",
+  Mini_DeployStormTower_Upgrade2 = "+1 Range",
+  Mini_DeployStormTower_B_UpgradeDescription = "Increases the range to 7x7.",
+
+  -- Overdriver
+  Mini_Overdrive_Name = "Overdrive",
+  Mini_Overdrive_Description = "Allows the target unit to use their weapon again. Deals self damage when overdriving a mech.",
+  Mini_Overdrive_Upgrade1 = "+1 Range",
+  Mini_Overdrive_A_UpgradeDescription = "Increases the range to 7x7.",
+
+  Mini_DeployOverdriver_Name = "Overdriver",
+  Mini_DeployOverdriver_Description = "Deploy an overdriver to help in combat.",
+  Mini_DeployOverdriver_Upgrade1 = "+1 Health",
+  Mini_DeployOverdriver_A_UpgradeDescription = "Increases the Overdriver's max health to 3.",
+  Mini_DeployOverdriver_Upgrade2 = "+1 Range",
+  Mini_DeployOverdriver_B_UpgradeDescription = "Increases the range to 7x7.",
 }

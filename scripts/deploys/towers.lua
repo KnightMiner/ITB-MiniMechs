@@ -311,4 +311,86 @@ Mini_DeployTerraformer = Deployable:new{
 Mini_DeployTerraformer_A  = Mini_DeployTerraformer:new{ Deployed = "Mini_TerraformerA" }
 Mini_DeployTerraformer_B  = Mini_DeployTerraformer:new{ Deployed = "Mini_TerraformerB" }
 Mini_DeployTerraformer_AB = Mini_DeployTerraformer:new{ Deployed = "Mini_TerraformerAB" }
+
+
+------------------------
+-- Deploy Storm Tower --
+------------------------
+
+--- Unit
+Mini_StormTower = Pawn:new {
+	Name           = "Storm Tower",
+	Health         = 2,
+	MoveSpeed      = 0,
+	DefaultTeam    = TEAM_PLAYER,
+	ImpactMaterial = IMPACT_METAL,
+	SkillList      = { "Mini_LightningStrike" },
+	Pushable       = false,
+	Corpse         = false,
+	-- display
+	Image          = "mini_tower",
+  ImageOffset     = modApi:getPaletteImageOffset("Blitzkrieg"),
+	SoundLocation  = "/support/earthmover/"
+}
+Mini_StormTowerA  = Mini_StormTower:new { SkillList = { "Mini_LightningStrike_A" } }
+Mini_StormTowerB  = Mini_StormTower:new { SkillList = { "Mini_LightningStrike_B" } }
+Mini_StormTowerAB = Mini_StormTower:new { SkillList = { "Mini_LightningStrike_AB" } }
+
+-- Weapon
+Mini_LightningStrike = SquareTargetSkill:new{
+	Class       = "Unique",
+	Rarity      = 0,
+	Damage      = 2,
+	Range       = 2,
+	PowerCost   = 0,
+	Upgrades    = 2,
+	UpgradeCost = {3,2},
+	-- display
+	Icon = "weapons/mini_lightning_strike.png",
+  TipImage = {
+		Unit          = Point(2,3),
+		Enemy         = Point(2,1),
+		Target        = Point(2,1)
+	}
+}
+Mini_LightningStrike_A  = Mini_LightningStrike:new{ Damage = 4 }
+Mini_LightningStrike_B  = Mini_LightningStrike:new{ Range = 3 }
+Mini_LightningStrike_AB = Mini_LightningStrike_A:new{ Range = 3 }
+
+function Mini_LightningStrike:GetSkillEffect(p1, p2)
+  local ret = SkillEffect()
+
+  ret:AddSound("/props/lightning_strike")
+	ret:AddDelay(1)
+	local damage = SpaceDamage(p2, self.Damage)
+  damage.sAnimation = "LightningBolt0"
+  ret:AddDamage(damage)
+
+  return ret
+end
+
+
+-- Deploy
+Mini_DeployStormTower = Deployable:new{
+	Deployed = "Mini_StormTower",
+	Rarity      = 4,
+	PowerCost   = 2,
+	Upgrades    = 2,
+	UpgradeCost = {3,2},
+	-- visuals
+  Icon        = "weapons/deploy_mini_storm_tower.png",
+  Projectile  = "effects/shotup_mini_storm_tower.png",
+	LaunchSound = "/weapons/deploy_tank",
+	ImpactSound = "/impact/generic/mech",
+  TipImage = {
+		Unit          = Point(2,3),
+		Enemy         = Point(3,2),
+		Target        = Point(2,1),
+    Second_Origin = Point(2,1),
+    Second_Target = Point(3,2)
+	}
+}
+Mini_DeployStormTower_A  = Mini_DeployStormTower:new{ Deployed = "Mini_StormTowerA" }
+Mini_DeployStormTower_B  = Mini_DeployStormTower:new{ Deployed = "Mini_StormTowerB" }
+Mini_DeployStormTower_AB = Mini_DeployStormTower:new{ Deployed = "Mini_StormTowerAB" }
 }
