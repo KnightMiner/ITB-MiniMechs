@@ -199,6 +199,9 @@ function mod:init()
   sprites.addSprite("effects", "shotup_mini_rock_artillery")
   sprites.addSprite("effects", "shotup_mini_volcano_rock")
   sprites.addSprite("weapons", "deploy_mini_rock_artillery")
+  -- towers
+  sprites.addSprite("effects", "shotup_mini_wind_tower")
+  sprites.addSprite("weapons", "deploy_mini_wind_tower")
   -- animations
   sprites.addAnimation("effects", "mini_raining_smoke", {
     NumFrames = 6,
@@ -218,6 +221,7 @@ function mod:init()
   self:loadScript("deploys/bots")
   self:loadScript("deploys/copters")
   self:loadScript("deploys/artillery")
+  self:loadScript("deploys/towers")
 
   -- texts
   local texts = self:loadScript("weapon_texts")
@@ -228,7 +232,8 @@ function mod:init()
     "Mini_DeployKnightBot", "Mini_DeployLaserBot", "Mini_DeployJudoBot", "Mini_DeployLeapBot",
     "Mini_DeploySmokeCopter", "Mini_DeployNapalmCopter", "Mini_DeployRepairCopter",
     "Mini_DeployMirrorTank", "Mini_DeployShrapnelTank",
-    "Mini_DeployUnstableArtillery", "Mini_DeployFreezeArtillery", "Mini_DeployRockArtillery"
+    "Mini_DeployUnstableArtillery", "Mini_DeployFreezeArtillery", "Mini_DeployRockArtillery",
+    "Mini_DeployWindTower"
   }) do
     modApi:addWeaponDrop(id, true)
     fixWeaponTexts(id)
@@ -238,7 +243,8 @@ function mod:init()
     "Mini_KnightCharge", "Mini_Laserbeam", "Mini_JudoThrow", "Mini_Boosters",
     "Mini_SmokeBombs", "Mini_NapalmBombs", "Mini_RepairDrop",
     "Mini_Mirrorshot",
-    "Mini_UnstableArtShot", "Mini_DeployFreezeMine", "Mini_RockThrow"
+    "Mini_UnstableArtShot", "Mini_DeployFreezeMine", "Mini_RockThrow",
+    "Mini_WindTorrent"
   }) do
     fixWeaponTexts(id)
   end

@@ -165,4 +165,23 @@ return {
   Mini_DeployRockArtillery_Upgrade2 = "Volcano",
   Mini_DeployRockArtillery_A_UpgradeDescription = "Artillery will be armored.",
   Mini_DeployRockArtillery_B_UpgradeDescription = "Fires a volcano rock that is immune to fire and ignites targets.",
+
+  ---------------
+  -- Towers --
+  ---------------
+
+  -- Wind Tower
+  Mini_WindTorrent_Name = "Wind Torrent",
+  Mini_WindTorrent_Description = "Push all units within a 5x5 box around the tower in a single direction.",
+  Mini_WindTorrent_Upgrade1 = "Push Away",
+  Mini_WindTorrent_A_UpgradeDescription = "Adds the option to push units in all four directions away from the tower.",
+  Mini_WindTorrent_Upgrade2 = "+1 Range",
+  Mini_WindTorrent_B_UpgradeDescription = "Increases the range to 7x7.",
+
+  Mini_DeployWindTower_Name = "Wind Tower",
+  Mini_DeployWindTower_Description = "Deploy a wind tower to help in combat.",
+  Mini_DeployWindTower_Upgrade1 = "Push Away",
+  Mini_DeployWindTower_A_UpgradeDescription = "Adds the option to push units in all four directions away from the tower.",
+  Mini_DeployWindTower_Upgrade2 = "+1 Range",
+  Mini_DeployWindTower_B_UpgradeDescription = "Increases the range to 7x7.",
 }
