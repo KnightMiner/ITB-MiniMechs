@@ -183,18 +183,18 @@ Mini_DeployWindTower_B  = Mini_DeployWindTower:new{ Deployed = "Mini_WindTowerB"
 Mini_DeployWindTower_AB = Mini_DeployWindTower:new{ Deployed = "Mini_WindTowerAB" }
 
 
-------------------------
--- Deploy Terraformer --
-------------------------
+----------------------
+-- Deploy Geoformer --
+----------------------
 
 --- Unit
-Mini_Terraformer = Pawn:new {
-	Name           = "Terraformer",
+Mini_Geoformer = Pawn:new {
+	Name           = "Geoformer",
 	Health         = 2,
 	MoveSpeed      = 0,
 	DefaultTeam    = TEAM_PLAYER,
 	ImpactMaterial = IMPACT_METAL,
-	SkillList      = { "Mini_Terraform" },
+	SkillList      = { "Mini_Geoform" },
 	Pushable       = false,
 	Corpse         = false,
 	-- display
@@ -202,12 +202,12 @@ Mini_Terraformer = Pawn:new {
   ImageOffset     = modApi:getPaletteImageOffset("Flame Behemoths"),
 	SoundLocation  = "/support/earthmover/"
 }
-Mini_TerraformerA  = Mini_Terraformer:new { SkillList = { "Mini_Terraform_A" } }
-Mini_TerraformerB  = Mini_Terraformer:new { SkillList = { "Mini_Terraform_B" } }
-Mini_TerraformerAB = Mini_Terraformer:new { SkillList = { "Mini_Terraform_AB" } }
+Mini_GeoformerA  = Mini_Geoformer:new { SkillList = { "Mini_Geoform_A" } }
+Mini_GeoformerB  = Mini_Geoformer:new { SkillList = { "Mini_Geoform_B" } }
+Mini_GeoformerAB = Mini_Geoformer:new { SkillList = { "Mini_Geoform_AB" } }
 
 -- Weapon
-Mini_Terraform = SquareTargetSkill:new{
+Mini_Geoform = SquareTargetSkill:new{
 	Class       = "Unique",
 	Rarity      = 0,
 	Damage      = 0,
@@ -217,7 +217,7 @@ Mini_Terraform = SquareTargetSkill:new{
 	Upgrades    = 2,
 	UpgradeCost = {1, 3},
 	-- display
-	Icon = "weapons/mini_terraform.png",
+	Icon = "weapons/mini_geoform.png",
 	LaunchSound = "/props/lava_tile",
   TipImage = {
 		Unit          = Point(2,3),
@@ -228,29 +228,29 @@ Mini_Terraform = SquareTargetSkill:new{
 	}
 }
 
-Mini_Terraform_A = Mini_Terraform:new{ UsesPerTurn = 3 }
-Mini_Terraform_B = Mini_Terraform:new{ Range = 3 }
-Mini_Terraform_AB = Mini_Terraform_A:new{ Range = 3 }
+Mini_Geoform_A = Mini_Geoform:new{ UsesPerTurn = 3 }
+Mini_Geoform_B = Mini_Geoform:new{ Range = 3 }
+Mini_Geoform_AB = Mini_Geoform_A:new{ Range = 3 }
 
-function Mini_Terraform:IsValidTarget(point)
-  return not Board:IsPawnSpace(point) and not Board:IsSpawning(point)
+function Mini_Geoform:IsValidTarget(point)
+  return not Board:IsPawnSpace(point)
 end
 
--- clear out terraformer uses each turn
+-- clear out geoformer uses each turn
 modApi.events.onNextTurn:subscribe(function(mission)
-  mission.MiniTerraformUses = nil
+  mission.MiniGeoformUses = nil
 end)
 
--- lets the terraformer be used multiple times per turn
-function Mini_Terraform.UpdateUseCount(id, maxUses)
+-- lets the geoformer be used multiple times per turn
+function Mini_Geoform.UpdateUseCount(id, maxUses)
   local mission = GetCurrentMission()
   if mission then
-    if not mission.MiniTerraformUses then
-      mission.MiniTerraformUses = {}
+    if not mission.MiniGeoformUses then
+      mission.MiniGeoformUses = {}
     end
     -- if we have not yet reached max uses, set the pawn to active again
-    mission.MiniTerraformUses[id] = (mission.MiniTerraformUses[id] or 0) + 1
-    if mission.MiniTerraformUses[id] < maxUses then
+    mission.MiniGeoformUses[id] = (mission.MiniGeoformUses[id] or 0) + 1
+    if mission.MiniGeoformUses[id] < maxUses then
     	local pawn = Board:GetPawn(id)
       modApi:runLater(function()
         pawn:SetActive(true)
@@ -259,12 +259,17 @@ function Mini_Terraform.UpdateUseCount(id, maxUses)
   end
 end
 
-function Mini_Terraform:GetSkillEffect(p1, p2)
+function Mini_Geoform:GetSkillEffect(p1, p2)
   local ret = SkillEffect()
 
   -- mountains and buildings - break
   if Board:IsTerrain(p2, TERRAIN_MOUNTAIN) or Board:IsBuilding(p2) then
     ret:AddDamage(SpaceDamage(p2, DAMAGE_DEATH))
+  elseif Board:IsSpawning(p2) then
+    -- spawns: rock
+  	local damage = SpaceDamage(p2, 0)
+    damage.sPawn = "Wall" -- better spawn animation than thrown rock
+    ret:AddDamage(damage)
   elseif Board:IsTerrain(p2, TERRAIN_WATER) or Board:IsTerrain(p2, TERRAIN_HOLE) or Board:IsTerrain(p2, TERRAIN_LAVA) then
   -- holes: fill
     local damage = SpaceDamage(p2, 0)
@@ -282,22 +287,22 @@ function Mini_Terraform:GetSkillEffect(p1, p2)
 
   -- add another use if we have more than 1
   if self.UsesPerTurn > 1 and not IsTestMechScenario() then
-		ret:AddScript(string.format("Mini_Terraform.UpdateUseCount(%d, %d)", Pawn:GetId(), self.UsesPerTurn))
+		ret:AddScript(string.format("Mini_Geoform.UpdateUseCount(%d, %d)", Pawn:GetId(), self.UsesPerTurn))
   end
 
   return ret
 end
 
 -- Deploy
-Mini_DeployTerraformer = Deployable:new{
-	Deployed = "Mini_Terraformer",
+Mini_DeployGeoformer = Deployable:new{
+	Deployed = "Mini_Geoformer",
 	Rarity      = 4,
 	PowerCost   = 2,
 	Upgrades    = 2,
 	UpgradeCost = {1,2},
 	-- visuals
-  Icon        = "weapons/deploy_mini_terraformer.png",
-  Projectile  = "effects/shotup_mini_terraformer.png",
+  Icon        = "weapons/deploy_mini_geoformer.png",
+  Projectile  = "effects/shotup_mini_geoformer.png",
 	LaunchSound = "/weapons/deploy_tank",
 	ImpactSound = "/impact/generic/mech",
   TipImage = {
@@ -308,9 +313,9 @@ Mini_DeployTerraformer = Deployable:new{
 	}
 }
 
-Mini_DeployTerraformer_A  = Mini_DeployTerraformer:new{ Deployed = "Mini_TerraformerA" }
-Mini_DeployTerraformer_B  = Mini_DeployTerraformer:new{ Deployed = "Mini_TerraformerB" }
-Mini_DeployTerraformer_AB = Mini_DeployTerraformer:new{ Deployed = "Mini_TerraformerAB" }
+Mini_DeployGeoformer_A  = Mini_DeployGeoformer:new{ Deployed = "Mini_GeoformerA" }
+Mini_DeployGeoformer_B  = Mini_DeployGeoformer:new{ Deployed = "Mini_GeoformerB" }
+Mini_DeployGeoformer_AB = Mini_DeployGeoformer:new{ Deployed = "Mini_GeoformerAB" }
 
 
 ------------------------

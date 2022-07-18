@@ -185,20 +185,20 @@ return {
   Mini_DeployWindTower_Upgrade2 = "+1 Range",
   Mini_DeployWindTower_B_UpgradeDescription = "Increases the range to 7x7.",
 
-  -- Terraformer
-  Mini_Terraform_Name = "Terraform",
-  Mini_Terraform_Description = "Twice per turn, terraforms ground to lava, destorys mountains, and transforms holes into ground.",
-  Mini_Terraform_Upgrade1 = "+1 Use Per Turn",
-  Mini_Terraform_A_UpgradeDescription = "Can use the terraformer three times per turn.",
-  Mini_Terraform_Upgrade2 = "+1 Range",
-  Mini_Terraform_B_UpgradeDescription = "Increases the range to 7x7.",
+  -- Geoformer
+  Mini_Geoform_Name = "Geoform",
+  Mini_Geoform_Description = "Twice per turn, geoforms ground to lava, destorys mountains, and transforms holes into ground.",
+  Mini_Geoform_Upgrade1 = "+1 Use Per Turn",
+  Mini_Geoform_A_UpgradeDescription = "Can use the geoformer three times per turn.",
+  Mini_Geoform_Upgrade2 = "+1 Range",
+  Mini_Geoform_B_UpgradeDescription = "Increases the range to 7x7.",
 
-  Mini_DeployTerraformer_Name = "Terraformer",
-  Mini_DeployTerraformer_Description = "Deploy a terraformer to help in combat.",
-  Mini_DeployTerraformer_Upgrade1 = "+1 Use Per Turn",
-  Mini_DeployTerraformer_A_UpgradeDescription = "Can use the terraformer 3 times per turn.",
-  Mini_DeployTerraformer_Upgrade2 = "+1 Range",
-  Mini_DeployTerraformer_B_UpgradeDescription = "Increases the range to 7x7.",
+  Mini_DeployGeoformer_Name = "Geoformer",
+  Mini_DeployGeoformer_Description = "Deploy a geoformer to help in combat.",
+  Mini_DeployGeoformer_Upgrade1 = "+1 Use Per Turn",
+  Mini_DeployGeoformer_A_UpgradeDescription = "Can use the geoformer 3 times per turn.",
+  Mini_DeployGeoformer_Upgrade2 = "+1 Range",
+  Mini_DeployGeoformer_B_UpgradeDescription = "Increases the range to 7x7.",
 
   -- Storm Tower
   Mini_LightningStrike_Name = "Lightning Strike",
