@@ -331,7 +331,7 @@ Mini_DeployRepairCopter = FlyingDeployable:new{
 	Rarity       = 4,
 	PowerCost    = 1,
 	Upgrades     = 2,
-	UpgradeCost  = {2,2},
+	UpgradeCost  = {1,2},
 	ShieldDeploy = false,
 	-- visuals
   Icon        = "weapons/deploy_mini_repair_copter.png",
