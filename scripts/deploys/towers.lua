@@ -1,3 +1,6 @@
+local mod = mod_loader.mods[modApi.currentMod]
+local multiFire = mod:loadScript("libs/multiFire")
+
 -- Skill that targets anything in a square around the unit
 local SquareTargetSkill = Skill:new{
   Range      = 2,
@@ -236,29 +239,6 @@ function Mini_Geoform:IsValidTarget(point)
   return not Board:IsPawnSpace(point)
 end
 
--- clear out geoformer uses each turn
-modApi.events.onNextTurn:subscribe(function(mission)
-  mission.MiniGeoformUses = nil
-end)
-
--- lets the geoformer be used multiple times per turn
-function Mini_Geoform.UpdateUseCount(id, maxUses)
-  local mission = GetCurrentMission()
-  if mission then
-    if not mission.MiniGeoformUses then
-      mission.MiniGeoformUses = {}
-    end
-    -- if we have not yet reached max uses, set the pawn to active again
-    mission.MiniGeoformUses[id] = (mission.MiniGeoformUses[id] or 0) + 1
-    if mission.MiniGeoformUses[id] < maxUses then
-    	local pawn = Board:GetPawn(id)
-      modApi:runLater(function()
-        pawn:SetActive(true)
-      end)
-    end
-  end
-end
-
 function Mini_Geoform:GetSkillEffect(p1, p2)
   local ret = SkillEffect()
 
@@ -285,10 +265,8 @@ function Mini_Geoform:GetSkillEffect(p1, p2)
     ret:AddDamage(damage)
   end
 
-  -- add another use if we have more than 1
-  if self.UsesPerTurn > 1 and not IsTestMechScenario() then
-		ret:AddScript(string.format("Mini_Geoform.UpdateUseCount(%d, %d)", Pawn:GetId(), self.UsesPerTurn))
-  end
+  -- add additional uses
+  multiFire:UpdateUseCount(ret, Pawn, self.UsesPerTurn)
 
   return ret
 end

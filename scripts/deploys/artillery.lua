@@ -1,5 +1,5 @@
 local mod = mod_loader.mods[modApi.currentMod]
-local saveData = mod:loadScript("libs/saveData")
+local multiFire = mod:loadScript("libs/multiFire")
 
 ------------------------
 -- Unstable Artillery --
@@ -49,56 +49,6 @@ Mini_UnstableArtShot_A = Mini_UnstableArtShot:new{
 	Double = true
 }
 
--- called on artillery fire to re-enable the artillery (assuming it has not fired yet)
-function Mini_UnstableArtShot.UpdateDoubleShot(id)
-	local mission = GetCurrentMission()
-	local pawn = Board:GetPawn(id)
-	if mission.MiniDoubleShot == nil then
-		mission.MiniDoubleShot = {}
-	end
-
-	-- if they have an old move, they already shot, restore their move speed
-	if mission.MiniDoubleShot[id] ~= nil then
-		pawn:SetMoveSpeed(mission.MiniDoubleShot[id])
-		mission.MiniDoubleShot[id] = nil
-	else
-		-- set the pawn active and clear its move speed
-		-- will restore the move speed later, turn end or when it attacks
-		modApi:runLater(function()
-			mission.MiniDoubleShot[id] = pawn:GetMoveSpeed()
-			pawn:SetMoveSpeed(0)
-			pawn:SetActive(true)
-		end)
-	end
-end
-
--- handles the case of finishing the turn without using arty's second shot
-modApi.events.onNextTurn:subscribe(function(mission)
-	-- game reload from menu fires next turn
-	if mission.MiniDoubleShot then
-		for id, value in pairs(mission.MiniDoubleShot) do
-			local pawn = Board:GetPawn(id)
-			if pawn then
-				pawn:SetMoveSpeed(value)
-			end
-		end
-		mission.MiniDoubleShot = nil
-	end
-end)
-
--- changes made via Pawn:SetMoveSpeed are not permanent, so any units with double shot need to be restored
-modApi.events.onGameEntered:subscribe(function()
-	local mission = GetCurrentMission()
-	if mission and mission.MiniDoubleShot then
-		for id, _ in pairs(mission.MiniDoubleShot) do
-			local pawn = Board:GetPawn(id)
-			if pawn then
-				pawn:SetMoveSpeed(0)
-			end
-		end
-	end
-end)
-
 function Mini_UnstableArtShot:GetSkillEffect(p1, p2)
 	local ret = SkillEffect()
 	local dir = GetDirection(p2-p1)
@@ -109,13 +59,10 @@ function Mini_UnstableArtShot:GetSkillEffect(p1, p2)
 	-- artillery shot
 	ret:AddArtillery(SpaceDamage(p2, self.Damage, dir), self.UpShot, 0.5)
 
-
 	-- second artillery shot
-	-- bMoved is set if a pawn moved but did not take an action (undo impossible)
-	-- IsUndoPossible is true in the case where hte pawn moved and no other action has been taken
 	local id = Pawn:GetId()
-	if self.Double and not IsTestMechScenario() and not Pawn:IsUndoPossible() and not saveData.getPawnKey(id, 'bMoved') then
-		ret:AddScript(string.format("Mini_UnstableArtShot.UpdateDoubleShot(%d)", id))
+	if self.Double then
+		multiFire:UpdateUseCount(ret, Pawn, 2)
 	end
 
 	return ret

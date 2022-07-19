@@ -45,6 +45,7 @@ function mod:metadata()
 end
 
 function mod:init()
+  self:loadScript("libs/multiFire"):init("MiniMechsMultiFire")
   -- sprites
   local sprites = self:loadScript("libs/sprites")
   sprites.addMissionUnits(

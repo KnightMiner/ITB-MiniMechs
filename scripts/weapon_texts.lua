@@ -138,7 +138,7 @@ return {
   Mini_DeployUnstableArtillery_Upgrade1 = "Armor",
   Mini_DeployUnstableArtillery_Upgrade2 = "Double Shot",
   Mini_DeployUnstableArtillery_A_UpgradeDescription = "Artillery will be armored.",
-  Mini_DeployUnstableArtillery_B_UpgradeDescription = "Artillery can fire twice if it does not move.",
+  Mini_DeployUnstableArtillery_B_UpgradeDescription = "Artillery can fire twice per turn.",
 
   -- Freeze Artillery
   Mini_DeployFreezeMine_Name = "Freeze Mine",
