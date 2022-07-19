@@ -398,9 +398,9 @@ Mini_Overdriver = Pawn:new {
   ImageOffset     = modApi:getPaletteImageOffset("Secret Squad"),
 	SoundLocation  = "/support/earthmover/"
 }
-Mini_OverdriverA  = Mini_Overdriver:new { Health = 4 }
-Mini_OverdriverB  = Mini_Overdriver:new { SkillList = { "Mini_Overdrive_A" } }
-Mini_OverdriverAB = Mini_OverdriverA:new { SkillList = { "Mini_Overdrive_A" } }
+Mini_OverdriverA  = Mini_Overdriver:new { SkillList = { "Mini_Overdrive_A" } }
+Mini_OverdriverB  = Mini_Overdriver:new { SkillList = { "Mini_Overdrive_B" } }
+Mini_OverdriverAB = Mini_Overdriver:new { SkillList = { "Mini_Overdrive_AB" } }
 
 -- Weapon
 Mini_Overdrive = SquareTargetSkill:new{
@@ -409,8 +409,9 @@ Mini_Overdrive = SquareTargetSkill:new{
 	Damage      = 2,
 	Range       = 2,
 	PowerCost   = 0,
-	Upgrades    = 1,
-	UpgradeCost = {2},
+	SelfDamage  = 1,
+	Upgrades    = 2,
+	UpgradeCost = {2,2},
 	-- display
 	Icon = "weapons/mini_overdrive.png",
   TipImage = {
@@ -419,7 +420,9 @@ Mini_Overdrive = SquareTargetSkill:new{
     Target        = Point(2,1)
 	}
 }
-Mini_Overdrive_A = Mini_Overdrive:new{ Range = 3 }
+Mini_Overdrive_A = Mini_Overdrive:new{ SelfDamage = 0 }
+Mini_Overdrive_B = Mini_Overdrive:new{ Range = 3 }
+Mini_Overdrive_AB = Mini_Overdrive_A:new{ Range = 3 }
 
 function Mini_Overdrive:IsValidTarget(point)
   local target = Board:GetPawn(point)
@@ -451,8 +454,8 @@ function Mini_Overdrive:GetSkillEffect(p1, p2)
 
   -- self damgae when activating mechs
   local target = Board:GetPawn(p2)
-  if target and target:IsMech() then
-    ret:AddDamage(SpaceDamage(p1, 1))
+  if target and target:IsMech() and self.SelfDamage > 0 then
+    ret:AddDamage(SpaceDamage(p1, self.SelfDamage))
   end
 
   return ret
@@ -464,7 +467,7 @@ Mini_DeployOverdriver = Deployable:new{
 	Rarity      = 4,
 	PowerCost   = 2,
 	Upgrades    = 2,
-	UpgradeCost = {1,2},
+	UpgradeCost = {2,2},
 	-- visuals
   Icon        = "weapons/deploy_mini_overdriver.png",
   Projectile  = "effects/shotup_mini_overdriver.png",

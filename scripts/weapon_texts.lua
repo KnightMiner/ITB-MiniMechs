@@ -218,13 +218,15 @@ return {
   -- Overdriver
   Mini_Overdrive_Name = "Overdrive",
   Mini_Overdrive_Description = "Allows the target unit to use their weapon again. Deals self damage when overdriving a mech.",
-  Mini_Overdrive_Upgrade1 = "+1 Range",
-  Mini_Overdrive_A_UpgradeDescription = "Increases the range to 7x7.",
+  Mini_Overdrive_Upgrade1 = "No Self Damage",
+  Mini_Overdrive_A_UpgradeDescription = "No longer damages itself when overdriving mechs.",
+  Mini_Overdrive_Upgrade2 = "+1 Range",
+  Mini_Overdrive_B_UpgradeDescription = "Increases the range to 7x7.",
 
   Mini_DeployOverdriver_Name = "Overdriver",
   Mini_DeployOverdriver_Description = "Deploy an overdriver to help in combat.",
-  Mini_DeployOverdriver_Upgrade1 = "+1 Health",
-  Mini_DeployOverdriver_A_UpgradeDescription = "Increases the Overdriver's max health to 3.",
+  Mini_DeployOverdriver_Upgrade1 = "No Self Damage",
+  Mini_DeployOverdriver_A_UpgradeDescription = "Overdriver no longer damages itself when overdriving mechs.",
   Mini_DeployOverdriver_Upgrade2 = "+1 Range",
   Mini_DeployOverdriver_B_UpgradeDescription = "Increases the range to 7x7.",
 }
