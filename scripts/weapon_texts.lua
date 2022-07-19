@@ -202,16 +202,16 @@ return {
 
   -- Storm Tower
   Mini_LightningStrike_Name = "Lightning Strike",
-  Mini_LightningStrike_Description = "Summons a bolt of lightning at the target.",
-  Mini_LightningStrike_Upgrade1 = "+2 Damage",
-  Mini_LightningStrike_A_UpgradeDescription = "Increases the damage by 2.",
+  Mini_LightningStrike_Description = "Summons a bolt of lightning at the target, damaging and confusing it.",
+  Mini_LightningStrike_Upgrade1 = "+1 Damage",
+  Mini_LightningStrike_A_UpgradeDescription = "Increases the lightning damage to 3.",
   Mini_LightningStrike_Upgrade2 = "+1 Range",
   Mini_LightningStrike_B_UpgradeDescription = "Increases the range to 7x7.",
 
   Mini_DeployStormTower_Name = "Storm Tower",
   Mini_DeployStormTower_Description = "Deploy a storm tower to help in combat.",
-  Mini_DeployStormTower_Upgrade1 = "+2 Damage",
-  Mini_DeployStormTower_A_UpgradeDescription = "Increases the lightning damage to 4.",
+  Mini_DeployStormTower_Upgrade1 = "+1 Damage",
+  Mini_DeployStormTower_A_UpgradeDescription = "Increases the lightning damage to 3.",
   Mini_DeployStormTower_Upgrade2 = "+1 Range",
   Mini_DeployStormTower_B_UpgradeDescription = "Increases the range to 7x7.",
 

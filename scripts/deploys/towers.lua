@@ -327,7 +327,7 @@ Mini_LightningStrike = SquareTargetSkill:new{
 	Range       = 2,
 	PowerCost   = 0,
 	Upgrades    = 2,
-	UpgradeCost = {3,2},
+	UpgradeCost = {2,2},
 	-- display
 	Icon = "weapons/mini_lightning_strike.png",
   TipImage = {
@@ -336,16 +336,17 @@ Mini_LightningStrike = SquareTargetSkill:new{
 		Target        = Point(2,1)
 	}
 }
-Mini_LightningStrike_A  = Mini_LightningStrike:new{ Damage = 4 }
+Mini_LightningStrike_A  = Mini_LightningStrike:new{ Damage = 3 }
 Mini_LightningStrike_B  = Mini_LightningStrike:new{ Range = 3 }
 Mini_LightningStrike_AB = Mini_LightningStrike_A:new{ Range = 3 }
 
 function Mini_LightningStrike:GetSkillEffect(p1, p2)
   local ret = SkillEffect()
 
+  -- TODO: custom skill tooltip?
   ret:AddSound("/props/lightning_strike")
 	ret:AddDelay(1)
-	local damage = SpaceDamage(p2, self.Damage)
+	local damage = SpaceDamage(p2, self.Damage, DIR_FLIP)
   damage.sAnimation = "LightningBolt0"
   ret:AddDamage(damage)
 
@@ -359,7 +360,7 @@ Mini_DeployStormTower = Deployable:new{
 	Rarity      = 4,
 	PowerCost   = 2,
 	Upgrades    = 2,
-	UpgradeCost = {3,2},
+	UpgradeCost = {2,2},
 	-- visuals
   Icon        = "weapons/deploy_mini_storm_tower.png",
   Projectile  = "effects/shotup_mini_storm_tower.png",
