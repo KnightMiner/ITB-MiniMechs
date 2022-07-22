@@ -39,7 +39,7 @@ return {
   Mini_DeployKnightBot_Upgrade1 = "+1 Move",
   Mini_DeployKnightBot_Upgrade2 = "Dash",
   Mini_DeployKnightBot_A_UpgradeDescription = "Increases the bot's move speed to 4.",
-  Mini_DeployKnightBot_B_UpgradeDescription = "Charge any distance before stabbing the target, increases damage by 1.",
+  Mini_DeployKnightBot_B_UpgradeDescription = "Charge any distance before stabbing the target, increasing damage by 1.",
 
   -- Laser-Bot
   Mini_Laserbeam_Name = "Laser Beam",

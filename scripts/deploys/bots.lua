@@ -41,7 +41,6 @@ Mini_KnightCharge = Prime_Punchmech:new {
 Mini_KnightCharge_A = Mini_KnightCharge:new{
 	PathSize = INT_MAX,
 	Dash = true,
-	Damage = 2,
 	TipImage = {
 		Unit = Point(2,4),
 		Enemy = Point(2,1),
@@ -49,6 +48,40 @@ Mini_KnightCharge_A = Mini_KnightCharge:new{
 		CustomPawn = "Mini_KnightBotB"
 	}
 }
+
+function Mini_KnightCharge_A:GetSkillEffect(p1, p2)
+	local ret = SkillEffect()
+	local direction = GetDirection(p2 - p1)
+
+	local doDamage = true
+	local target = p2
+
+  if self.Dash then
+		target = GetProjectileEnd(p1,p2,PATH_PROJECTILE)
+    if not Board:IsBlocked(target,PATH_PROJECTILE) then -- dont attack an empty edge square, just run to the edge
+    	doDamage = false
+	    target = target + DIR_VECTORS[direction]
+  	end
+		local dashEnd = target - DIR_VECTORS[direction]
+		if dashEnd ~= p1 then
+	  	ret:AddCharge(Board:GetSimplePath(p1, dashEnd), FULL_DELAY)
+		end
+	end
+
+	if doDamage then
+		-- boost damage by 1 if we dashed
+		local damageAmount = self.Damage
+		if target:Manhattan(p1) > 1 then
+			damageAmount = damageAmount + 1
+		end
+		local damage = SpaceDamage(target, damageAmount, direction)
+		damage.sAnimation = "explopunch1_"..direction
+		damage.loc = target
+		ret:AddMelee(p2 - DIR_VECTORS[direction], damage)
+	end
+
+	return ret
+end
 
 -- Equipable weapon
 Mini_DeployKnightBot = Deployable:new{
