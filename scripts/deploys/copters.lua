@@ -299,7 +299,7 @@ Mini_RepairCopter = Pawn:new {
 Mini_RepairCopterB  = Mini_RepairCopter:new { SkillList = { "Mini_RepairDrop_A" } }
 
 Mini_RepairDrop = Mini_Leap_Attack:new {
-	Damage          = -1,
+	Damage          = -2,
 	Fire            = EFFECT_REMOVE,
 	Acid            = EFFECT_REMOVE,
 	TargetEmpty     = false,
