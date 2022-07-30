@@ -28,6 +28,7 @@ local DEPLOYABLES = {
   {"Mini_UnstableArtillery", "effects/shotup_mini_unstable_artillery.png"},
   {"Mini_FreezeArtillery", "effects/shotup_mini_freeze_artillery.png"},
   {"Mini_RockArtillery", "effects/shotup_mini_rock_artillery.png"},
+  {"Mini_ShrapnelTank", "effects/shotup_mini_shrapneltank.png"},
 }
 
 -- iterate directions prioritizing towards the enemy, so you don't deploy in a back corner

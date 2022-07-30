@@ -112,7 +112,7 @@ Mini_DeployMirrorTank_AB = Mini_DeployMirrorTank:new{
 Mini_ShrapnelTank = Pawn:new {
 	Name           = "Shrapnel Tank",
 	Health         = 1,
-	MoveSpeed      = 3,
+	MoveSpeed      = 2,
 	DefaultTeam    = TEAM_PLAYER,
 	ImpactMaterial = IMPACT_METAL,
 	SkillList      = { "Brute_Shrapnel" },
@@ -121,9 +121,9 @@ Mini_ShrapnelTank = Pawn:new {
 	SoundLocation  = "/mech/brute/tank",
 	Corpse         = false
 }
-Mini_ShrapnelTankA  = Mini_ShrapnelTank:new { Health = 3 }
-Mini_ShrapnelTankB  = Mini_ShrapnelTank:new { MoveSpeed = 4 }
-Mini_ShrapnelTankAB = Mini_ShrapnelTank:new { Health = 3, MoveSpeed = 4 }
+Mini_ShrapnelTankA  = Mini_ShrapnelTank:new { Armor = true }
+Mini_ShrapnelTankB  = Mini_ShrapnelTank:new { MoveSpeed = 3 }
+Mini_ShrapnelTankAB = Mini_ShrapnelTank:new { MoveSpeed = 3, Armor = true }
 
 -- Equipable weapon
 Mini_DeployShrapnelTank = Deployable:new{
