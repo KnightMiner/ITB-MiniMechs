@@ -125,7 +125,7 @@ Mini_SmokeBombs_A = Mini_SmokeBombs:new {
 Mini_DeploySmokeCopter = FlyingDeployable:new{
 	Deployed = "Mini_SmokeCopter",
 	Rarity      = 3,
-	PowerCost   = 2,
+	PowerCost   = 1,
 	Upgrades    = 2,
 	UpgradeCost = {1,2},
 	-- visuals
