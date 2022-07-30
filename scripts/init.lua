@@ -215,6 +215,10 @@ function mod:init()
   sprites.addIcon("combat/icons", "mini_fill_icon", Point(-10,12))
   sprites.addIcon("combat/icons", "mini_lava_icon", Point(-10,12))
   sprites.addIcon("combat/icons", "mini_overdrive_icon", Point(-10,12))
+  -- pilot
+	sprites.addSprite("portraits/pilots", "Pilot_MiniToyman")
+	sprites.addSprite("portraits/pilots", "Pilot_MiniToyman_2")
+	sprites.addSprite("portraits/pilots", "Pilot_MiniToyman_blink")
   -- animations
   sprites.addAnimation("effects", "mini_raining_smoke", {
     NumFrames = 6,
@@ -235,6 +239,7 @@ function mod:init()
   self:loadScript("deploys/copters")
   self:loadScript("deploys/artillery")
   self:loadScript("deploys/towers")
+  self:loadScript("pilot")
 
   -- texts
   local texts = self:loadScript("weapon_texts")
@@ -264,6 +269,8 @@ function mod:init()
 end
 
 function mod:load(options,version)
+  modApi:setText("Pilot_MiniDeploy_Title", "Deployer")
+  modApi:setText("Pilot_MiniDeploy_Text", "Spawns a random deployable at the start of each mission.")
 end
 
 return mod
