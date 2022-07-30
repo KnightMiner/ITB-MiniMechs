@@ -4,7 +4,7 @@ CreatePilot{
   Personality = "Repairman", -- TODO: custom personality
   Skill = "MiniDeploy",
   Sex = SEX_MALE,
-  PowerCost = 1,
+  PowerCost = 2,
   Voice = "/voice/harold"
 }
 
@@ -19,7 +19,7 @@ local DEPLOYABLES = {
   {"Deploy_Tank", "effects/shotup_tank.png"},
   {"Deploy_ShieldTank", "effects/shotup_shieldtank.png"},
   {"Deploy_AcidTank", "effects/shotup_acidtank.png"},
-  {"Mini_ShrapnelTank", "effects/shotup_mini_shrapneltank.png"},
+  {"Deploy_PullTank", "effects/shotup_pulltank.png"},
   -- copters
   {"Mini_SmokeCopter", "effects/shotup_mini_smoke_copter.png"},
   {"Mini_NapalmCopter", "effects/shotup_mini_napalm_copter.png"},
