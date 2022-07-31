@@ -65,11 +65,22 @@ Mini_WindTorrent = Support_Wind:new{
   PushAway = false,
   Upgrades = 2,
   UpgradeCost = { 1, 2 },
+	TipImage = {
+    CustomPawn    = "Mini_WindTower",
+		Unit = Point(2,3),
+		Enemy = Point(2,1),
+		Enemy2 = Point(3,2),
+		Enemy3 = Point(0,2),
+		Mountain = Point(3,1),
+		Friendly = Point(1,2),
+		Target = Point(3,2),
+	}
 }
 
 Mini_WindTorrent_A  = Mini_WindTorrent:new{
   PushAway = true,
   TipImage = {
+    CustomPawn    = "Mini_WindTowerA",
     Unit = Point(2,2),
     Enemy = Point(2,1),
     Enemy2 = Point(3,2),
@@ -228,6 +239,7 @@ Mini_Geoform = SquareTargetSkill:new{
   Icon = "weapons/mini_geoform.png",
   LaunchSound = "/props/lava_tile",
   TipImage = {
+    CustomPawn    = "Mini_Geoformer",
     Unit          = Point(2,3),
     Hole          = Point(3,1),
     Target        = Point(3,1),
@@ -336,6 +348,7 @@ Mini_LightningStrike = SquareTargetSkill:new{
   -- display
   Icon = "weapons/mini_lightning_strike.png",
   TipImage = {
+    CustomPawn    = "Mini_StormTower",
     Unit          = Point(2,3),
     Enemy         = Point(2,1),
     Target        = Point(2,1)
@@ -420,6 +433,7 @@ Mini_Overdrive = SquareTargetSkill:new{
   -- display
   Icon = "weapons/mini_overdrive.png",
   TipImage = {
+    CustomPawn    = "Mini_Overdriver",
     Unit          = Point(2,3),
     Friendly      = Point(2,1),
     Target        = Point(2,1)
