@@ -68,7 +68,11 @@ local function spawnDeploy(pawn)
         effect:AddArtillery(pawn:GetSpace(), damage, deploy[2])
         -- since its currently the enemy's turn, set the pawn to inactive so it does not attack
         -- attack is not queued, so could be bad for the grid
-        effect:AddScript("Board:GetPawn("..target:GetString().."):SetActive(false)")
+        effect:AddScript([[
+          local pawn = Board:GetPawn(]]..target:GetString()..[[)
+          pawn:ResetUses()
+          pawn:SetActive(false)
+        ]])
         Board:AddEffect(effect)
 
         -- don't need to further search for a space
