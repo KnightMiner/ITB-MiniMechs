@@ -123,6 +123,21 @@ return {
   Mini_DeployRepairCopter_A_UpgradeDescription = "Copter starts with a shield.",
   Mini_DeployRepairCopter_B_UpgradeDescription = "Increases potential repair range by 1.",
 
+  -- Overdrive Copter
+  Mini_OverdriveDrop_Name = "Overdrive Drop",
+  Mini_OverdriveDrop_Description = "Fly over the targets, grannting them a second chance to attack.",
+  Mini_OverdriveDrop_Upgrade1 = "+1 Use",
+  Mini_OverdriveDrop_Upgrade2 = "+1 Range",
+  Mini_OverdriveDrop_A_UpgradeDescription = "Increases uses per battle by 1.",
+  Mini_OverdriveDrop_B_UpgradeDescription = "Increases potential range by 1.",
+
+  Mini_DeployOverdriveCopter_Name = "Overdrive Copter",
+  Mini_DeployOverdriveCopter_Description = "Deploy an overdrive copter to help in combat.",
+  Mini_DeployOverdriveCopter_Upgrade1 = "+1 Overdrive",
+  Mini_DeployOverdriveCopter_Upgrade2 = "+1 Move",
+  Mini_DeployOverdriveCopter_A_UpgradeDescription = "Increases the number of times the copter can act per battle to 3.",
+  Mini_DeployOverdriveCopter_B_UpgradeDescription = "Increases the copter's move speed from 3 to 4.",
+
   ---------------
   -- Artillery --
   ---------------
@@ -217,16 +232,16 @@ return {
 
   -- Overdriver
   Mini_Overdrive_Name = "Overdrive",
-  Mini_Overdrive_Description = "Allows the target unit to use their weapon again. Deals self damage when overdriving a mech.",
-  Mini_Overdrive_Upgrade1 = "No Self Damage",
-  Mini_Overdrive_A_UpgradeDescription = "No longer damages itself when overdriving mechs.",
+  Mini_Overdrive_Description = "Allows the target unit to use their weapon again.",
+  Mini_Overdrive_Upgrade1 = "+1 Use",
+  Mini_Overdrive_A_UpgradeDescription = "Increases uses per battle by 1.",
   Mini_Overdrive_Upgrade2 = "+1 Range",
   Mini_Overdrive_B_UpgradeDescription = "Increases the range to 7x7.",
 
   Mini_DeployOverdriver_Name = "Overdriver",
   Mini_DeployOverdriver_Description = "Deploy an overdriver to help in combat.",
-  Mini_DeployOverdriver_Upgrade1 = "No Self Damage",
-  Mini_DeployOverdriver_A_UpgradeDescription = "Overdriver no longer damages itself when overdriving mechs.",
+  Mini_DeployOverdriver_Upgrade1 = "+1 Overdrive",
+  Mini_DeployOverdriver_A_UpgradeDescription = "Increases the number of times the overdriver can act per battle to 3.",
   Mini_DeployOverdriver_Upgrade2 = "+1 Range",
   Mini_DeployOverdriver_B_UpgradeDescription = "Increases the range to 7x7.",
 }

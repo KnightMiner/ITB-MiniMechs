@@ -1,5 +1,6 @@
 local mod = mod_loader.mods[modApi.currentMod]
 local multiFire = mod:loadScript("libs/multiFire")
+local overdrive = mod:loadScript("libs/overdrive")
 
 -- Skill that targets anything in a square around the unit
 local SquareTargetSkill = Skill:new{
@@ -425,34 +426,16 @@ Mini_Overdrive_B = Mini_Overdrive:new{ Range = 3 }
 Mini_Overdrive_AB = Mini_Overdrive_A:new{ Range = 3 }
 
 function Mini_Overdrive:IsValidTarget(point)
-  local target = Board:GetPawn(point)
-  if target and not target:IsDead() and not target:IsActive()
-      and not isEnemy(Pawn:GetTeam(), target:GetTeam()) then
-    return true
-  end
-  return false
+  return overdrive:canTarget(point)
 end
 
 function Mini_Overdrive:GetSkillEffect(p1, p2)
   local ret = SkillEffect()
 
-  -- power on unit again
-  ret:AddSound("/enemy/shared/robot_power_on")
-  ret:AddScript(string.format([[
-    local p = %s
-    local unit = Board:GetPawn(p)
-    if unit then
-      unit:SetActive(true)
-      Board:Ping(p, GL_Color(128, 0, 255))
-    end]],
-    p2:GetString()
-  ))
+  -- just call the helper
+  ret:AddDamage(overdrive:apply(ret, p2))
 
-  local icon = SpaceDamage(p2, 0)
-  icon.sImageMark = "combat/icons/mini_overdrive_icon.png"
-  ret:AddDamage(icon)
-
-  -- self damgae when activating mechs
+  -- damage target for mechs, currently disabled
   local target = Board:GetPawn(p2)
   if target and target:IsMech() and self.Damage > 0 then
     ret:AddDamage(SpaceDamage(target, self.Damage))

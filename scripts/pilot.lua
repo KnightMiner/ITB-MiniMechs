@@ -24,6 +24,7 @@ local DEPLOYABLES = {
   {"Mini_SmokeCopter", "effects/shotup_mini_smoke_copter.png"},
   {"Mini_NapalmCopter", "effects/shotup_mini_napalm_copter.png"},
   {"Mini_RepairCopter", "effects/shotup_mini_repair_copter.png"},
+  {"Mini_OverdriveCopter", "effects/shotup_mini_overdrive_copter.png"},
   -- artillery
   {"Mini_UnstableArtillery", "effects/shotup_mini_unstable_artillery.png"},
   {"Mini_FreezeArtillery", "effects/shotup_mini_freeze_artillery.png"},

@@ -124,6 +124,14 @@ function mod:init()
       Broken   = { PosX = -19, PosY = 1 },
       Icon     = {}
     },
+    {
+      Name    = "mini_overdrive_copter",
+      Default  = { PosX = -15, PosY = 0 },
+      Animated = { PosX = -15, PosY = 0, NumFrames = 4 },
+      Death    = { PosX = -19, PosY = 1, NumFrames = 11, Time = 0.14, Loop = false },
+      Broken   = { PosX = -19, PosY = 1 },
+      Icon     = {}
+    },
     -- artillery
     {
       Name    = "mini_unstable_artillery",
@@ -189,6 +197,8 @@ function mod:init()
   sprites.addSprite("effects", "shotup_mini_repair_copter")
   sprites.addSprite("weapons", "deploy_mini_repair_copter")
   sprites.addSprite("weapons", "mini_repair_drop")
+  sprites.addSprite("effects", "shotup_mini_overdrive_copter")
+  sprites.addSprite("weapons", "deploy_mini_overdrive_copter")
   -- artillery
   sprites.addSprite("effects", "shotup_mini_unstable_artillery")
   sprites.addSprite("weapons", "deploy_mini_unstable_artillery")
@@ -232,6 +242,12 @@ function mod:init()
     PosX = -20,
     PosY = -38
   })
+  sprites.addAnimation("effects", "mini_raining_overdrive", {
+    NumFrames = 3,
+    Time = 0.0225,
+    PosX = -20,
+    PosY = -38
+  })
 
   -- deploys
   self:loadScript("deploys/tanks")
@@ -248,10 +264,10 @@ function mod:init()
   -- add weapons to the shop
   for _, id in ipairs({
     "Mini_DeployKnightBot", "Mini_DeployLaserBot", "Mini_DeployJudoBot", "Mini_DeployLeapBot",
-    "Mini_DeploySmokeCopter", "Mini_DeployNapalmCopter", "Mini_DeployRepairCopter",
+    "Mini_DeploySmokeCopter", "Mini_DeployNapalmCopter", "Mini_DeployRepairCopter", "Mini_DeployOverdriveCopter",
     "Mini_DeployMirrorTank", "Mini_DeployShrapnelTank",
     "Mini_DeployUnstableArtillery", "Mini_DeployFreezeArtillery", "Mini_DeployRockArtillery",
-    "Mini_DeployWindTower", "Mini_DeployGeoformer", "Mini_DeployStormTower", "Mini_DeployOverdriver"
+    "Mini_DeployWindTower", "Mini_DeployGeoformer", "Mini_DeployStormTower"
   }) do
     modApi:addWeaponDrop(id, true)
     fixWeaponTexts(id)
@@ -262,7 +278,7 @@ function mod:init()
     "Mini_SmokeBombs", "Mini_NapalmBombs", "Mini_RepairDrop",
     "Mini_Mirrorshot",
     "Mini_UnstableArtShot", "Mini_DeployFreezeMine", "Mini_RockThrow",
-    "Mini_WindTorrent", "Mini_Geoform", "Mini_LightningStrike", "Mini_Overdrive"
+    "Mini_WindTorrent", "Mini_Geoform", "Mini_LightningStrike", "Mini_Overdrive", "Mini_DeployOverdriver"
   }) do
     fixWeaponTexts(id)
   end
