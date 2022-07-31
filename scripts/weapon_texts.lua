@@ -253,8 +253,8 @@ return {
   Mini_Exchange_Upgrade2 = "+1 Second Range",
   Mini_Exchange_B_UpgradeDescription = "Increases the range of second untit to 7x7.",
 
-  Mini_DeployExchangeTower_Name = "Deploy Exchange Tower",
-  Mini_DeployExchangeTower_Description = "Deploy an overdriver to help in combat.",
+  Mini_DeployExchangeTower_Name = "Exchange Tower",
+  Mini_DeployExchangeTower_Description = "Deploy an exchange tower to help in combat.",
   Mini_DeployExchangeTower_Upgrade1 = "+1 First Range",
   Mini_DeployExchangeTower_A_UpgradeDescription = "Increases range of first unit to 5x5.",
   Mini_DeployExchangeTower_Upgrade2 = "+1 Second Range",

@@ -316,7 +316,7 @@ Mini_DeployNapalmCopter_AB = Mini_DeployNapalmCopter:new{
 
 --- Unit
 Mini_RepairCopter = Pawn:new {
-	Name           = "Napalm Copter",
+	Name           = "Repair Copter",
 	Health         = 1,
 	MoveSpeed      = 3,
 	Flying         = true,
