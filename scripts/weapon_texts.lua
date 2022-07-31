@@ -244,4 +244,19 @@ return {
   Mini_DeployOverdriver_A_UpgradeDescription = "Increases the number of times the overdriver can act per battle to 3.",
   Mini_DeployOverdriver_Upgrade2 = "+1 Range",
   Mini_DeployOverdriver_B_UpgradeDescription = "Increases the range to 7x7.",
+
+  -- Exchange Tower
+  Mini_Exchange_Name = "Force Swap",
+  Mini_Exchange_Description = "Force two nearby units to swap.",
+  Mini_Exchange_Upgrade1 = "+1 First Range",
+  Mini_Exchange_A_UpgradeDescription = "Increases range of first unit to 5x5.",
+  Mini_Exchange_Upgrade2 = "+1 Second Range",
+  Mini_Exchange_B_UpgradeDescription = "Increases the range of second untit to 7x7.",
+
+  Mini_DeployExchangeTower_Name = "Deploy Exchange Tower",
+  Mini_DeployExchangeTower_Description = "Deploy an overdriver to help in combat.",
+  Mini_DeployExchangeTower_Upgrade1 = "+1 First Range",
+  Mini_DeployExchangeTower_A_UpgradeDescription = "Increases range of first unit to 5x5.",
+  Mini_DeployExchangeTower_Upgrade2 = "+1 Second Range",
+  Mini_DeployExchangeTower_B_UpgradeDescription = "Increases range of second unit to 5x5.",
 }

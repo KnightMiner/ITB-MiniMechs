@@ -9,25 +9,29 @@ local SquareTargetSkill = Skill:new{
 }
 
 -- return true for a point if it can be targeted by this weapon
-function SquareTargetSkill:IsValidTarget(point)
+function SquareTargetSkill:IsValidTarget(point, isSecond)
   return true
 end
 
-function SquareTargetSkill:GetTargetArea(p1)
+function SquareTargetSkill:BaseGetTargetArea(p1, range, ignore)
   local ret = PointList()
 
-  for i = -self.Range, self.Range do
-    for j = -self.Range, self.Range do
+  for i = -range, range do
+    for j = -range, range do
       local point = Point(p1.x + i, p1.y + j)
-      if Board:IsValid(point)
+      if point ~= ignore and Board:IsValid(point)
           and (self.TargetSelf or i ~= 0 or j ~= 0)
-          and self:IsValidTarget(point) then
+          and self:IsValidTarget(point, false) then
         ret:push_back(point)
       end
     end
   end
 
   return ret
+end
+
+function SquareTargetSkill:GetTargetArea(p1)
+  return self:BaseGetTargetArea(p1, self.Range)
 end
 
 
@@ -477,3 +481,106 @@ function Mini_DeployOverdriver:GetSkillEffect(p1, p2)
   ret:AddScript("Board:GetPawn("..p2:GetString().."):ResetUses()")
   return ret
 end
+
+
+---------------------------
+-- Deploy Exchange Tower --
+---------------------------
+
+--- Unit
+Mini_ExchangeTower = Pawn:new {
+  Name           = "Exchange Tower",
+  Health         = 2,
+  MoveSpeed      = 0,
+  DefaultTeam    = TEAM_PLAYER,
+  ImpactMaterial = IMPACT_METAL,
+  SkillList      = { "Mini_Exchange" },
+  Pushable       = false,
+  Corpse         = false,
+  -- display
+  Image          = "mini_tower",
+  ImageOffset     = modApi:getPaletteImageOffset("Bombermechs"),
+  SoundLocation  = "/support/earthmover/"
+}
+Mini_ExchangeTowerA  = Mini_ExchangeTower:new { SkillList = { "Mini_Exchange_A" } }
+Mini_ExchangeTowerB  = Mini_ExchangeTower:new { SkillList = { "Mini_Exchange_B" } }
+Mini_ExchangeTowerAB = Mini_ExchangeTower:new { SkillList = { "Mini_Exchange_AB" } }
+
+-- Weapon
+Mini_Exchange = SquareTargetSkill:new{
+  Class       = "Unique",
+  Rarity      = 0,
+  -- weapon props
+  Range       = 1,
+  SecondRange = 2,
+	Acid        = false,
+	Heal        = false,
+	Hurt        = false,
+  TwoClick    = true,
+  -- costs
+  PowerCost   = 0,
+  Upgrades    = 2,
+  UpgradeCost = {2,2},
+  -- display
+  Icon        = "advanced/weapons/Science_TC_SwapOther.png",
+	UpShot      = "advanced/effects/shotup_swapother.png",
+	LaunchSound = "/weapons/enhanced_tractor",
+	ImpactSound = "/weapons/force_swap",
+	TipImage = {
+    CustomPawn = "Mini_ExchangeTower",
+		Unit         = Point(2,3),
+		Target       = Point(2,2),
+		Enemy        = Point(2,2),
+		Friendly     = Point(3,1),
+		Second_Click = Point(3,1),
+		Length = 7,
+	},
+}
+Mini_Exchange_A  = Mini_Exchange:new{ Range = 2 }
+Mini_Exchange_B  = Mini_Exchange:new{ SecondRange = 3 }
+Mini_Exchange_AB = Mini_Exchange_A:new{ SecondRange = 3 }
+
+function Mini_Exchange:IsValidTarget(point)
+  local pawn = Board:GetPawn(point)
+  return pawn ~= nil and not pawn:IsGuarding()
+end
+
+function Mini_Exchange:GetSecondTargetArea(p1, p2)
+  return self:BaseGetTargetArea(p1, self.SecondRange, p2)
+end
+
+local baseSingleEffect = Science_TC_SwapOther.GetSkillEffect
+function Mini_Exchange:GetSkillEffect(p1, p2)
+  return baseSingleEffect(self, p1, p2)
+end
+
+local baseFinalSwap = Science_TC_SwapOther.GetFinalEffect
+function Mini_Exchange:GetFinalEffect(p1, p2, p3)
+  return baseFinalSwap(self, p1, p2, p3)
+end
+
+-- Deploy
+Mini_DeployExchangeTower = Deployable:new{
+  Deployed = "Mini_ExchangeTower",
+  Rarity      = 4,
+  PowerCost   = 2,
+  Upgrades    = 2,
+  UpgradeCost = {2,2},
+  -- visuals
+  Icon        = "weapons/deploy_mini_exchange_tower.png",
+  Projectile  = "effects/shotup_mini_exchange_tower.png",
+  LaunchSound = "/weapons/deploy_tank",
+  ImpactSound = "/impact/generic/mech",
+  TipImage = {
+    Unit          = Point(2,3),
+    Enemy         = Point(2,1),
+    CustomEnemy   = "Mini_ExchangeTower",
+    Origin        = Point(2,1),
+    Friendly      = Point(3,2),
+    Target        = Point(3,2),
+    Second_Click  = Point(2,3),
+  }
+}
+Mini_DeployExchangeTower_A  = Mini_DeployExchangeTower:new{ Deployed = "Mini_ExchangeTowerA" }
+Mini_DeployExchangeTower_B  = Mini_DeployExchangeTower:new{ Deployed = "Mini_ExchangeTowerB" }
+Mini_DeployExchangeTower_AB = Mini_DeployExchangeTower:new{ Deployed = "Mini_ExchangeTowerAB" }
